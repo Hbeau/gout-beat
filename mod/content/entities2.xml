@@ -1,0 +1,11 @@
+<entities anm2root="gfx/" version="5">
+  <entity anm2path="grid_coin_switch_red.anm2" id="4500" variant="4304" name="CoinSwitchRed" reroll="false" boss="0" champion="0"  bestiary="false"></entity>
+  <entity anm2path="grid_coin_yelllow.anm2" id="4500" variant="7019" name="CoinSwitchYellow" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity anm2path="grid_coin_switch_default.anm2" id="4500" variant="9279" name="CoinSwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="6498" name="BombSwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="3534" name="BombSwitchRed" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="6421" name="BombSwitchYellow" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="6498" name="KeySwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="3534" name="KeySwitchRed" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="6421" name="KeySwitchYellow" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+</entities>
