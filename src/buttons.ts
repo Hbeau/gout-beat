@@ -3,6 +3,7 @@ import { BombSwitchState } from "./bombSwitchState";
 import { CoinSwitchState } from "./coinSwitchState";
 import { KeySwitchState } from "./keySwitchState";
 import { TogglePlateCallback } from "./togglePlateCallback";
+import { GoutBeatEntities } from "./types/goutBeatEntities";
 
 const buttons = {
   bombButton : BombSwitchState.default(),
@@ -12,21 +13,21 @@ const buttons = {
 }
 
 export function togglePlate( plate: GridEntityPressurePlate | undefined){
-  if (plate?.GetVariant() === buttons.bombButton.variant ){
+  if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH ){
     plateOnCallback(plate, buttons.bombButton.callback)
     plateOffCallback(plate, () => {
       buttons.bombButton = buttons.bombButton.next();
       buttons.bombButton.resetSwitch(plate);
     });
   }
-  if (plate?.GetVariant() === buttons.keyButton.variant ){
+  if (plate?.GetVariant() === GoutBeatEntities.KEY_SWITCH  ){
     plateOnCallback(plate, buttons.keyButton.callback)
     plateOffCallback(plate, () => {
       buttons.keyButton = buttons.keyButton.next();
       buttons.keyButton.resetSwitch(plate);
     });
   }
-  if (plate?.GetVariant() === buttons.coinButton.variant ){
+  if (plate?.GetVariant() === GoutBeatEntities.COIN_SWITCH  ){
     plateOnCallback(plate, buttons.coinButton.callback)
     plateOffCallback(plate, () => {
       buttons.coinButton = buttons.coinButton.next();

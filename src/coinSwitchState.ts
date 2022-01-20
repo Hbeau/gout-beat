@@ -1,36 +1,34 @@
-import { PickUpModifiers } from "./pickUpModifiers";
+import globals from "./globals";
 import { SwitchVariant } from "./switchVariant";
+import { Rules } from "./types/rules/rules";
 
 export class CoinSwitchState {
   public static variants: SwitchVariant[] = [
-    new SwitchVariant(Isaac.GetEntityVariantByName("CoinSwitchDefault"),
+    new SwitchVariant(
       "gfx/grid/grid_coin_switch_default.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
-        player.GetData().coinState = PickUpModifiers.NORMAL;
+      (player: EntityPlayer) => {
+        globals.$rules[0] = Rules.RULE_COIN_NORMAL;
         player.AddCoins(-999);
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
       },
-      () => CoinSwitchState.next()
+      () => CoinSwitchState.next(),
     ),
-    new SwitchVariant( Isaac.GetEntityVariantByName("CoinSwitchRed"),
+    new SwitchVariant(
       "gfx/grid/grid_coin_switch_red.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+      (player: EntityPlayer) => {
         player.AnimateSad();
-        player.GetData().coinState = PickUpModifiers.HURT;
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
+        globals.$rules[0] = Rules.RULE_COIN_HURT;
       },
-       () => CoinSwitchState.next()
-      ),
-      new SwitchVariant( Isaac.GetEntityVariantByName("CoinSwitchYellow"),
+      () => CoinSwitchState.next(),
+    ),
+    new SwitchVariant(
       "gfx/grid/grid_coin_switch_Yellow.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+      (player: EntityPlayer) => {
         player.AnimateHappy();
-        player.GetData().coinState = PickUpModifiers.INFINITE;
+        globals.$rules[0] = Rules.RULE_COIN_INFINITE;
         player.AddCoins(999);
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
       },
-      () => CoinSwitchState.next()
-      )
+      () => CoinSwitchState.next(),
+    ),
   ];
 
   private static index = 0;
@@ -40,7 +38,7 @@ export class CoinSwitchState {
   }
 
   public static next(): SwitchVariant {
-    CoinSwitchState.index +=1;
-    return this.variants[CoinSwitchState.index % (this.variants.length)];
+    CoinSwitchState.index += 1;
+    return this.variants[CoinSwitchState.index % this.variants.length];
   }
 }

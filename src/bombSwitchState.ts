@@ -1,36 +1,31 @@
-import { PickUpModifiers } from "./pickUpModifiers";
+import globals from "./globals";
+import { Rules } from "./types/rules/rules";
 import { SwitchVariant } from "./switchVariant";
 
 export class BombSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
-      Isaac.GetEntityVariantByName("BombSwitchDefault"),
       "gfx/grid/grid_bomb_switch_default.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
-        player.GetData().bombState = PickUpModifiers.NORMAL;
+      (player: EntityPlayer) => {
+        globals.$rules[1] = Rules.RULE_BOMB_NORMAL;
         player.RemoveGoldenBomb();
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
       },
       () => BombSwitchState.next(),
     ),
     new SwitchVariant(
-      Isaac.GetEntityVariantByName("BombSwitchRed"),
       "gfx/grid/grid_bomb_switch_red.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+      (player: EntityPlayer) => {
         player.AnimateSad();
-        player.GetData().bombState = PickUpModifiers.HURT;
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
+        globals.$rules[1]=Rules.RULE_BOMB_HURT;
       },
       () => BombSwitchState.next(),
     ),
     new SwitchVariant(
-      Isaac.GetEntityVariantByName("BombSwitchYellow"),
       "gfx/grid/grid_bomb_switch_Yellow.anm2",
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+      (player: EntityPlayer) => {
         player.AnimateHappy();
-        player.GetData().bombState = PickUpModifiers.INFINITE;
+        globals.$rules[1]=Rules.RULE_BOMB_INFINITE;
         player.AddGoldenBomb();
-        Isaac.DebugString(`variant : ${plate.GetVariant()}`);
       },
       () => BombSwitchState.next(),
     ),
