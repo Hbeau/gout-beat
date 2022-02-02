@@ -1,6 +1,6 @@
-import { log } from "isaacscript-common";
 import { BombSwitchState } from "./bombSwitchState";
 import { CoinSwitchState } from "./coinSwitchState";
+import globals from "./globals";
 import { KeySwitchState } from "./keySwitchState";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
@@ -13,7 +13,7 @@ const buttons = {
 }
 
 export function togglePlate( plate: GridEntityPressurePlate | undefined){
-  if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH ){
+  if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH){
     plateOnCallback(plate, buttons.bombButton.callback)
     plateOffCallback(plate, () => {
       buttons.bombButton = buttons.bombButton.next();
@@ -34,8 +34,19 @@ export function togglePlate( plate: GridEntityPressurePlate | undefined){
       buttons.coinButton.resetSwitch(plate);
     });
   }
-
+  if (plate?.GetVariant() === GoutBeatEntities.BOSS_SWITCH ){
+    plateOnCallback(plate, (player,bossPlate)=> {
+        globals.$objective = globals.$bossPlates.find((bossSwitch) => bossSwitch.plate.GetGridIndex()=== bossPlate.GetGridIndex())?.objective
+    })
+    plateOffCallback(plate, (player,pp) => {
+      pp.State = PressurePlateState.UNPRESSED;
+      globals.$bossPlates.filter(p => p.objective !== globals.$objective).forEach(entity => {
+        entity.plate.GetSprite().Play("Off", true);
+    });
+  });
 }
+}
+
 
 function plateOnCallback(
   plate: GridEntityPressurePlate | undefined,
@@ -51,12 +62,13 @@ function plateOnCallback(
 }
 function plateOffCallback(
   plate: GridEntityPressurePlate | undefined,
-  callback: { (player:EntityPlayer, plate: GridEntity): void},
+  callback: TogglePlateCallback,
 ) {
   if (
     plate?.State === PressurePlateState.PRESSURE_PLATE_PRESSED &&
     Isaac.GetPlayer().Position.Distance(plate.Position) > 50
   ) {
+    Isaac.DebugString("state" + plate?.GetSaveState().VarData)
     plate.GetSaveState().VarData = 0;
     callback(Isaac.GetPlayer(), plate);
   }

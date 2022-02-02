@@ -2,4 +2,5 @@
   <entity id="4500" variant="9279" name="CoinSwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
   <entity id="4500" variant="6498" name="BombSwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
   <entity id="4500" variant="3892" name="KeySwitchDefault" reroll="false" boss="0" champion="0" bestiary="false"></entity>
+  <entity id="4500" variant="6194" name="BossSwitch" reroll="false" boss="0" champion="0" bestiary="false"></entity>
 </entities>
