@@ -68,7 +68,6 @@ function plateOffCallback(
     plate?.State === PressurePlateState.PRESSURE_PLATE_PRESSED &&
     Isaac.GetPlayer().Position.Distance(plate.Position) > 50
   ) {
-    Isaac.DebugString("state" + plate?.GetSaveState().VarData)
     plate.GetSaveState().VarData = 0;
     callback(Isaac.GetPlayer(), plate);
   }
