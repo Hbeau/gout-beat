@@ -24,31 +24,30 @@ function displayChallengeText() {
     );
   });
 
-    if(globals.$objective !== undefined){
-    Isaac.RenderText(
-        globals.$objective,
-        defaultX,
-        defaultY-10,
-        1,
-        1,
-        1,
-        255,
-      );
-    }
-
+  if (globals.$objective !== undefined) {
+    Isaac.RenderText(globals.$objective, defaultX, defaultY - 10, 1, 1, 1, 255);
+  }
 
   const player = Isaac.GetPlayer();
   const playerRenderPos = Isaac.WorldToRenderPosition(player.Position);
-  Isaac.RenderText(`${player.Position}`, playerRenderPos.X, playerRenderPos.Y, 1, 1, 1, 255);
-
- globals.$bossPlates.forEach((plate) => renderBossSprite(plate));
+  const index = Game().GetRoom().GetGridIndex(player.Position);
+  Isaac.RenderText(
+    `${index}`,
+    playerRenderPos.X,
+    playerRenderPos.Y,
+    1,
+    1,
+    1,
+    255,
+  );
+  globals.$bossPlates.forEach((plate) => renderBossSprite(plate));
 }
 
 function renderBossSprite(obj: ObjectiveSwitch) {
   const bossSprites = Sprite();
   bossSprites.Load("gfx/ui/hudpickups.anm2", true);
   bossSprites.SetFrame("Destination", DestinationFromObjective(obj.objective));
-  bossSprites.Offset = Vector(-8, -16)
+  bossSprites.Offset = Vector(-8, -16);
   bossSprites.Color = HALF_FADED_COLOR;
   const renderPos = Isaac.WorldToRenderPosition(obj.plate.Position);
   bossSprites.Render(renderPos, Vector.Zero, Vector.Zero);

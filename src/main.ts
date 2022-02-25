@@ -1,14 +1,12 @@
 import { upgradeMod } from "isaacscript-common";
 import { init as entityKillInit } from "./callbacks/entityKill";
 import { entitySpawnInit } from "./callbacks/entitySpawn";
-import { initGridEntityInit } from "./callbacks/gridEntityInit";
 import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
 import { pickupInit } from "./callbacks/pickup";
+import { postGameStarted } from "./callbacks/postGameStarted";
 import { initPostItemPickup } from "./callbacks/postItemPickup";
 import { initPostNewRoom } from "./callbacks/postNewRoom";
 import { postRenderInit } from "./callbacks/postRender";
-import globals from "./globals";
-import { GoutBeatEntities } from "./types/goutBeatEntities";
 
 const MOD_NAME = "Gout Beat";
 
@@ -27,26 +25,9 @@ export function main(): void {
   pickupInit(mod);
   entitySpawnInit(mod);
   initPostNewRoom(mod);
-  initGridEntityInit(modUpgraded);
   initPostItemPickup(modUpgraded);
 }
 
 function boostIsaacForTest() {
   Isaac.GetPlayer().Damage = 400;
-}
-
-function postGameStarted() {
-  globals.$bossPlates = [];
-  globals.$rules = []
-
-  Isaac.ExecuteCommand("goto s.default.11:101");
-
-  Isaac.Spawn(
-    EntityType.ENTITY_PICKUP,
-    PickupVariant.PICKUP_COLLECTIBLE,
-    GoutBeatEntities.WOODEN_PIPE,
-    Vector(400, 300),
-    Vector(0, 0),
-    undefined,
-  );
 }
