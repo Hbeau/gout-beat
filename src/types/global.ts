@@ -6,10 +6,12 @@ export class Global {
   private objective: Objectives | undefined;
   private rules: Rules[];
   private bossPlates: ObjectiveSwitch[];
+  private victory:boolean;
 
   constructor() {
     this.rules = [];
     this.bossPlates = [];
+    this.victory = false;
   }
 
   public get $objective(): Objectives | undefined {
@@ -32,7 +34,16 @@ export class Global {
     return this.bossPlates;
   }
 
+	public get $victory(): boolean {
+		return this.victory;
+	}
+
+	public set $victory(value: boolean) {
+		this.victory = value;
+	}
+
 	public set $bossPlates(value: ObjectiveSwitch[]) {
     this.bossPlates = value;
   }
+
 }
