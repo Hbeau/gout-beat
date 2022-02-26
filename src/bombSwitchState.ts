@@ -1,11 +1,10 @@
 import globals from "./globals";
-import { Rules } from "./types/rules/rules";
 import { SwitchVariant } from "./switchVariant";
+import { Rules } from "./types/rules/rules";
 
 export class BombSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
-      "gfx/grid/grid_bomb_switch_default.anm2",
       (player: EntityPlayer) => {
         globals.$rules[1] = Rules.RULE_BOMB_NORMAL;
         player.RemoveGoldenBomb();
@@ -13,18 +12,16 @@ export class BombSwitchState {
       () => BombSwitchState.next(),
     ),
     new SwitchVariant(
-      "gfx/grid/grid_bomb_switch_red.anm2",
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[1]=Rules.RULE_BOMB_HURT;
+        globals.$rules[1] = Rules.RULE_BOMB_HURT;
       },
       () => BombSwitchState.next(),
     ),
     new SwitchVariant(
-      "gfx/grid/grid_bomb_switch_Yellow.anm2",
       (player: EntityPlayer) => {
         player.AnimateHappy();
-        globals.$rules[1]=Rules.RULE_BOMB_INFINITE;
+        globals.$rules[1] = Rules.RULE_BOMB_INFINITE;
         player.AddGoldenBomb();
       },
       () => BombSwitchState.next(),

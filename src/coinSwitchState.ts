@@ -5,7 +5,6 @@ import { Rules } from "./types/rules/rules";
 export class CoinSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
-      "gfx/grid/grid_coin_switch_default.anm2",
       (player: EntityPlayer) => {
         globals.$rules[0] = Rules.RULE_COIN_NORMAL;
         player.AddCoins(-999);
@@ -13,7 +12,6 @@ export class CoinSwitchState {
       () => CoinSwitchState.next(),
     ),
     new SwitchVariant(
-      "gfx/grid/grid_coin_switch_red.anm2",
       (player: EntityPlayer) => {
         player.AnimateSad();
         globals.$rules[0] = Rules.RULE_COIN_HURT;
@@ -21,7 +19,6 @@ export class CoinSwitchState {
       () => CoinSwitchState.next(),
     ),
     new SwitchVariant(
-      "gfx/grid/grid_coin_switch_Yellow.anm2",
       (player: EntityPlayer) => {
         player.AnimateHappy();
         globals.$rules[0] = Rules.RULE_COIN_INFINITE;

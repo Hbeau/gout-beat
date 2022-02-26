@@ -14,6 +14,10 @@ export function DestinationFromObjective(obj: Objectives) {
       return 11;
     case Objectives.THE_LAMB:
       return 4;
+    case Objectives.BOSS_RUSH:
+      return 14;
+    case Objectives.THE_BEAST:
+      return 13;
     default:
       return 0;
   }
