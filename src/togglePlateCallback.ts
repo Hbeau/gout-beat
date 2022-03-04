@@ -1,3 +1,3 @@
-export interface TogglePlateCallback{
-  (player : EntityPlayer, plate : GridEntityPressurePlate) : void
+export interface TogglePlateCallback {
+  (player: EntityPlayer, plate: GridEntityPressurePlate): void;
 }

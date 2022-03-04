@@ -1,3 +1,5 @@
 export enum PickupModifiers {
-  NORMAL, HURT, INFINITE
+  NORMAL,
+  HURT,
+  INFINITE,
 }

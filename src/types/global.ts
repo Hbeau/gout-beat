@@ -8,7 +8,7 @@ export class Global {
   private rules: Rules[];
   private bossPlates: ObjectiveSwitch[];
 
-  private victory:boolean;
+  private victory: boolean;
 
   private step: SelectionStep | undefined;
 
@@ -42,13 +42,13 @@ export class Global {
     this.rules = value;
   }
 
-	public get $victory(): boolean {
-		return this.victory;
-	}
+  public get $victory(): boolean {
+    return this.victory;
+  }
 
-	public set $victory(value: boolean) {
-		this.victory = value;
-	}
+  public set $victory(value: boolean) {
+    this.victory = value;
+  }
 
   public set $bossPlates(value: ObjectiveSwitch[]) {
     this.bossPlates = value;
@@ -57,6 +57,4 @@ export class Global {
   public get $bossPlates(): ObjectiveSwitch[] {
     return this.bossPlates;
   }
-
-
 }

@@ -1,4 +1,4 @@
-import { initArray, upgradeMod } from "isaacscript-common";
+import { upgradeMod } from "isaacscript-common";
 import { init as entityKillInit } from "./callbacks/entityKill";
 import { entitySpawnInit } from "./callbacks/entitySpawn";
 import { initGridEntityCollision } from "./callbacks/gridEntitycollision";

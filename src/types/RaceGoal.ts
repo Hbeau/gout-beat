@@ -6,5 +6,5 @@ export enum Objectives {
   DELIRIUM = "Delirium",
   MOTHER = "Mother",
   THE_BEAST = "The Beast",
-  BOSS_RUSH = "Boss Rush"
+  BOSS_RUSH = "Boss Rush",
 }
