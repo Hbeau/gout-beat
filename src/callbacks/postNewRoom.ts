@@ -1,9 +1,11 @@
 import globals from "../globals";
+import { reloadTheBeast } from "../preventEnds";
 import { Objectives } from "../types/RaceGoal";
 import { SelectionStep } from "../types/selectionStep";
 
 export function initPostNewRoom(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
+  mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM,postTheBeastRoom)
 }
 
 const RULE_PLATE_INDEX = [37, 67, 54, 50];
@@ -14,20 +16,22 @@ function initSelectRoom() {
   if (globals.$step !== SelectionStep.SELECTION_COMPLETE) {
     if (roomId === -3) {
       const room = Game().GetRoom();
-      if (globals.$step === SelectionStep.OBJECTIVE_SELECTION) {
-        setupBossRoom(room);
-        globals.$step = SelectionStep.RULE_SELECTION;
+      if (globals.$step === SelectionStep.STATER_SELECTION) {
+
       }
       if (globals.$step === SelectionStep.RULE_SELECTION) {
-        globals.$step = SelectionStep.STATER_SELECTION;
       }
-      if (globals.$step === SelectionStep.STATER_SELECTION) {
-        globals.$step = SelectionStep.SELECTION_COMPLETE;
+      if (globals.$step === SelectionStep.OBJECTIVE_SELECTION) {
+        setupBossRoom(room);
       }
-    } else {
-      // Game().ChangeRoom(-3);
-      Isaac.ExecuteCommand("goto s.default.13");
+
+
     }
+  }
+}
+function postTheBeastRoom(){
+  if(globals.$victory && Game().GetLevel().GetStage()===13){
+    reloadTheBeast()
   }
 }
 

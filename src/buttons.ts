@@ -4,6 +4,7 @@ import globals from "./globals";
 import { KeySwitchState } from "./keySwitchState";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
+import { SelectionStep } from "./types/selectionStep";
 
 const buttons = {
   bombButton: BombSwitchState.default(),
@@ -39,6 +40,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         (bossSwitch) =>
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
       )?.objective;
+      globals.$step = SelectionStep.SELECTION_COMPLETE;
     });
     plateOffCallback(plate, (player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;

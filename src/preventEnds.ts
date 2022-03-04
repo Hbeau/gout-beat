@@ -1,4 +1,4 @@
-import { addRoomClearCharges } from "isaacscript-common";
+import { addRoomClearCharges, getNPCs } from "isaacscript-common";
 import globals from "./globals";
 import { Objectives } from "./types/RaceGoal";
 
@@ -6,29 +6,72 @@ export function postEntityKillMegaSatan2(_entity: Entity): void {
   if(_entity.Type === EntityType.ENTITY_MEGA_SATAN_2){
     if(globals.$objective === Objectives.MEGA_SATAN){
       globals.$victory = true;
+      emulateRoomClear();
     }
-    emulateRoomClear();
   }
 }
 export function postEntityKillTheBeast(entity : Entity):void {
     if(entity.Type === EntityType.ENTITY_BEAST){
-        reloadRoom(entity);
+      const variant = entity.Variant;
+
+      if (variant !== BeastVariant.BEAST) {
+        return;
+      }
+      if(globals.$objective === Objectives.THE_BEAST){
+      globals.$victory=true
+      Isaac.ExecuteCommand("goto x.itemdungeon.666");
+      }
     }
   }
 
-function reloadRoom(entity:Entity){
-  const variant = entity.Variant;
 
-  if (variant !== BeastVariant.BEAST) {
-    return;
+  export function postEntityTheLamb(_entity: Entity){
+    if(allLambEntitiesDead()){
+      if(globals.$objective === Objectives.THE_LAMB){
+        globals.$victory = true;
+        emulateRoomClear();
+    }
   }
-  Isaac.ExecuteCommand("goto x.itemdungeon.666");
-
 }
-export function postEntityTheLamb(_entity: Entity){
-
+export function postEntityKillIsaac(entity: Entity){
+  if(entity.Type === EntityType.ENTITY_ISAAC){
+    if(globals.$objective === Objectives.BLUE_BABY && entity.Variant === 1){
+      globals.$victory = true;
+      emulateRoomClear();
+    }
+  }
+}
+export function postEntityKillHush(entity: Entity){
+  if(entity.Type === EntityType.ENTITY_HUSH){
+    if(globals.$objective === Objectives.HUSH){
+      globals.$victory = true;
+      emulateRoomClear();
+    }
+  }
+}
+export function postEntityKillMother(entity: Entity){
+  if(entity.Type === EntityType.ENTITY_MOTHER && entity.Variant === 10){
+    if(globals.$objective === Objectives.MOTHER){
+      globals.$victory = true;
+      emulateRoomClear();
+    }
+  }
 }
 
+function allLambEntitiesDead() {
+  const lambs = getNPCs(EntityType.ENTITY_THE_LAMB);
+  for (const lamb of lambs) {
+    if (lamb.IsInvincible()) {
+      continue;
+    }
+
+    if (!lamb.IsDead()) {
+      return false;
+    }
+  }
+
+  return true;
+}
 
 function emulateRoomClear() {
 
@@ -46,17 +89,7 @@ function emulateRoomClear() {
     undefined,
   );
 }
-export function postNewRoom(): void {
-  const stage = Game().GetLevel().GetStage();
-  const centerPos = Game().GetRoom().GetCenterPos();
-
-  //if (stage !== 13 || !v.run.beastDefeated) {
-  //  return;
-  //}
-
-  // If we do nothing, The Beast fight will begin again
-  // If we remove all of the Beast entities, it will trigger the credits
-  // Instead, we spawn another Beast to prevent the fight from beginning
+export function reloadTheBeast(){
   Isaac.Spawn(
     EntityType.ENTITY_BEAST,
     0,
@@ -71,7 +104,7 @@ export function postNewRoom(): void {
     EntityType.ENTITY_PICKUP,
     PickupVariant.PICKUP_BIGCHEST,
     0,
-    centerPos,
+    Game().GetRoom().GetCenterPos(),
     Vector.Zero,
     undefined,
   );

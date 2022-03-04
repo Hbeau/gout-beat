@@ -1,6 +1,6 @@
 export enum SelectionStep {
-  OBJECTIVE_SELECTION,
-  RULE_SELECTION,
-  STATER_SELECTION,
-  SELECTION_COMPLETE,
+  OBJECTIVE_SELECTION = "objective",
+  RULE_SELECTION = "rules",
+  STATER_SELECTION = "starter",
+  SELECTION_COMPLETE = "complete",
 }
