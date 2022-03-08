@@ -28,7 +28,7 @@ function displayChallengeText() {
   }
   Isaac.RenderText(
     `${globals.$step?.toString()}`,
-    defaultX,
+    defaultX + 250,
     defaultY - 10,
     1,
     1,

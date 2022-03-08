@@ -40,7 +40,8 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         (bossSwitch) =>
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
       )?.objective;
-      globals.$step = SelectionStep.SELECTION_COMPLETE;
+      globals.$step = SelectionStep.RULE_SELECTION;
+      Isaac.ExecuteCommand("goto s.default.13");
     });
     plateOffCallback(plate, (player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;
