@@ -6,7 +6,7 @@ import { SelectionStep } from "../types/selectionStep";
 
 export function initPostNewRoom(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
-  mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM,postTheBeastRoom)
+  mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
 const RULE_PLATE_INDEX = [34, 36, 54, 50];
@@ -31,9 +31,9 @@ function initSelectRoom() {
     }
   }
 }
-function postTheBeastRoom(){
-  if(globals.$victory && Game().GetLevel().GetStage()===13){
-    reloadTheBeast()
+function postTheBeastRoom() {
+  if (globals.$victory && Game().GetLevel().GetStage() === 13) {
+    reloadTheBeast();
   }
 }
 

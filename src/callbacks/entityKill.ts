@@ -52,13 +52,11 @@ function isaac(entity: Entity) {
   postEntityKillIsaac(entity);
 }
 
-function delirium(entity: Entity){
-
-}
-function hush(entity: Entity){
+function delirium(entity: Entity) {}
+function hush(entity: Entity) {
   postEntityKillHush(entity);
 }
-function mother(entity: Entity){
+function mother(entity: Entity) {
   postEntityKillMother(entity);
 }
 

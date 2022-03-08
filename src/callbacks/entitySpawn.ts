@@ -20,18 +20,21 @@ function onPreEntitySpawn(
     Isaac.GetPlayer().AnimatePill(color);
   }
 }
-function replaceBigChest( entityType: EntityType,
+function replaceBigChest(
+  entityType: EntityType,
   variant: int,
   subType: int,
 ): void | [number, number, number, number] {
-  if(
+  if (
     entityType === EntityType.ENTITY_PICKUP &&
     variant === PickupVariant.PICKUP_BIGCHEST &&
     globals.$victory
-  ){
-    return [EntityType.ENTITY_PICKUP,
+  ) {
+    return [
+      EntityType.ENTITY_PICKUP,
       PickupVariant.PICKUP_COLLECTIBLE,
-      GoutBeatEntities.WOODEN_PIPE,0]
+      GoutBeatEntities.WOODEN_PIPE,
+      0,
+    ];
   }
 }
-
