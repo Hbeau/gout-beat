@@ -8,3 +8,10 @@ export enum Objectives {
   THE_BEAST = "The Beast",
   BOSS_RUSH = "Boss Rush",
 }
+export enum Rules {
+  BOMB = "Bomb",
+  KEY = "Key",
+  COIN = "Coin",
+  ITEM = "Item",
+  PILL = "Pill"
+}

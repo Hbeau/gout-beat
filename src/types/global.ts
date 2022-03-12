@@ -1,12 +1,23 @@
 import { ObjectiveSwitch } from "./objectiveSwitch";
-import { Objectives } from "./RaceGoal";
+import { Objectives } from "./raceGoal";
 import { Rules } from "./rules/rules";
+import { RuleSwitch } from "./ruleSwitch";
 import { SelectionStep } from "./selectionStep";
 
 export class Global {
   private objective: Objectives | undefined;
   private rules: Rules[];
   private bossPlates: ObjectiveSwitch[];
+  private rulesPlates: RuleSwitch[];
+
+	public get $rulesPlates(): RuleSwitch[] {
+		return this.rulesPlates;
+	}
+
+	public set $rulesPlates(value: RuleSwitch[]) {
+		this.rulesPlates = value;
+	}
+
 
   private victory: boolean;
 
@@ -23,6 +34,7 @@ export class Global {
   constructor() {
     this.rules = [];
     this.bossPlates = [];
+    this.rulesPlates = [];
     this.victory = false;
   }
 

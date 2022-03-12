@@ -1,7 +1,6 @@
 import globals from "../globals";
 import { reloadTheBeast } from "../preventEnds";
-import { Objectives } from "../types/RaceGoal";
-import { Rules } from "../types/rules/rules";
+import { Objectives,Rules } from "../types/raceGoal";
 import { SelectionStep } from "../types/selectionStep";
 
 export function initPostNewRoom(mod: Mod) {
@@ -9,7 +8,12 @@ export function initPostNewRoom(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
-const RULE_PLATE_INDEX = [34, 36, 54, 50];
+const RULE_PLATE_INDEX = [34, 36, 54];
+const RULE_PLATE_VARIANT = [
+  9279,
+  6498,
+  3892
+]
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
 function initSelectRoom() {
@@ -38,11 +42,11 @@ function postTheBeastRoom() {
 }
 
 function setupBossRoom(room: Room) {
-  BOSS_PLATES_INDEX.forEach((id, index) => {
+  BOSS_PLATES_INDEX.forEach((gridIndex, index) => {
     const plate = Isaac.GridSpawn(
       GridEntityType.GRID_PRESSURE_PLATE,
       6194,
-      room.GetGridPosition(id),
+      room.GetGridPosition(gridIndex),
       true,
     );
     if (plate !== undefined) {
@@ -52,16 +56,16 @@ function setupBossRoom(room: Room) {
   });
 }
 function setupRulesRoom(room: Room) {
-  RULE_PLATE_INDEX.forEach((id, index) => {
+  RULE_PLATE_INDEX.forEach((gridIndex, index) => {
     const plate = Isaac.GridSpawn(
       GridEntityType.GRID_PRESSURE_PLATE,
-      9279,
-      room.GetGridPosition(id),
+      RULE_PLATE_VARIANT[index],
+      room.GetGridPosition(gridIndex),
       true,
     );
     if (plate !== undefined) {
-     /* const rules = Object.values(Rules)[index];
-      globals.$bossPlates.push({ plate, rules });*/
+      const rules = Object.values(Rules)[index];
+      globals.$rulesPlates.push({ plate, rules });
     }
   });
 }

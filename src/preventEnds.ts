@@ -1,6 +1,6 @@
 import { addRoomClearCharges, getNPCs } from "isaacscript-common";
 import globals from "./globals";
-import { Objectives } from "./types/RaceGoal";
+import { Objectives } from "./types/raceGoal";
 
 export function postEntityKillMegaSatan2(_entity: Entity): void {
   if (_entity.Type === EntityType.ENTITY_MEGA_SATAN_2) {
