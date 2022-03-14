@@ -20,7 +20,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         .find(
           (p) => p.plate.GetGridIndex() === rulesPlate.GetGridIndex()
         )?.rules;
-        Isaac.DebugString(`pressed ${rule}`)
+
         if(rule !== undefined){
           buttons.get(rule)?.callback(player,plate);
         }
@@ -31,8 +31,11 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
           (p) => p.plate.GetGridIndex() === plate.GetGridIndex()
         )?.rules;
         if(rule !== undefined){
-          buttons.get(rule)?.next();
-          buttons.get(rule)?.resetSwitch(plate);
+          const button = buttons.get(rule)?.next();
+          if(button !== undefined){
+          buttons.set(rule, button)
+          button?.resetSwitch(plate);
+        }
         }
     });
   }
@@ -43,6 +46,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
       )?.objective;
       globals.$step = Steps.RULE_SELECTION;
+      Isaac.ExecuteCommand("goto s.default.13");
     });
     plateOffCallback(plate, (player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;
@@ -51,7 +55,6 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         .forEach((entity) => {
           entity.plate.GetSprite().Play("Off", true);
         });
-        Isaac.ExecuteCommand("goto s.default.13");
     });
   }
 }
@@ -78,8 +81,6 @@ function plateOffCallback(
     plate?.GetSaveState().VarData === 1 &&
     Isaac.GetPlayer().Position.Distance(plate.Position) > 50
   ) {
-    Isaac.ConsoleOutput(`${plate.GetType()} is pressed`);
-
     plate.GetSaveState().VarData = 0;
     callback(Isaac.GetPlayer(), plate);
   }
