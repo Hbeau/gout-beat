@@ -1,4 +1,4 @@
-import { Rules } from "../types/raceGoal";
+import { Rules } from "../types/selection";
 
 export function IconFromRule(rule: Rules) {
   switch (rule) {

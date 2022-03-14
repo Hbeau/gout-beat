@@ -15,3 +15,10 @@ export enum Rules {
   ITEM = "Item",
   PILL = "Pill"
 }
+export enum Steps {
+  OBJECTIVE_SELECTION = "objective",
+  RULE_SELECTION = "rules",
+  STATER_SELECTION = "starter",
+  SELECTION_COMPLETE = "complete",
+}
+

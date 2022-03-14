@@ -1,12 +1,12 @@
 import globals from "./globals";
 import { SwitchVariant } from "./switchVariant";
-import { Rules } from "./types/rules/rules";
+import { ruleDescriptors } from "./types/rules/ruleDescriptions";
 
 export class KeySwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       (player: EntityPlayer) => {
-        globals.$rules[2] = Rules.RULE_KEY_NORMAL;
+        globals.$rules[2] = ruleDescriptors[5];
         player.RemoveGoldenBomb();
       },
       () => KeySwitchState.next(),
@@ -14,14 +14,14 @@ export class KeySwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[2] = Rules.RULE_KEY_HURT;
+        globals.$rules[2] = ruleDescriptors[3];
       },
       () => KeySwitchState.next(),
     ),
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateHappy();
-        globals.$rules[2] = Rules.RULE_KEY_INFINITE;
+        globals.$rules[2] = ruleDescriptors[4];
         player.AddGoldenKey();
       },
       () => KeySwitchState.next(),

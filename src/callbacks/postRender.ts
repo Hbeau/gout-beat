@@ -1,8 +1,7 @@
 import globals from "../globals";
 import { ObjectiveSwitch } from "../types/objectiveSwitch";
-import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 import { RuleSwitch } from "../types/ruleSwitch";
-import { SelectionStep } from "../types/selectionStep";
+import { Steps } from "../types/selection";
 import { DestinationFromObjective } from "../utils/destinationFromObjective";
 import { IconFromRule } from "../utils/iconFromRule";
 
@@ -28,13 +27,13 @@ function displayChallengeText() {
   if (globals.$objective !== undefined) {
     renderText(globals.$objective, 0, -10);
   }
-  if (globals.$step === SelectionStep.OBJECTIVE_SELECTION) {
+  if (globals.$step === Steps.OBJECTIVE_SELECTION) {
     globals.$bossPlates.forEach((plate) => renderBossSprite(plate));
   }
-  if (globals.$step === SelectionStep.RULE_SELECTION) {
+  if (globals.$step === Steps.RULE_SELECTION) {
     globals.$rulesPlates.forEach((plate) => renderRuleSprite(plate));
     globals.$rules.forEach((rule, index) => {
-      renderText(ruleDescriptors[rule].gameText, 0, 10 * index)
+      renderText(rule.gameText, 0, 10 * index)
     });
   }
   // const entities = Isaac.GetRoomEntities();

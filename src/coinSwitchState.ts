@@ -1,12 +1,12 @@
 import globals from "./globals";
 import { SwitchVariant } from "./switchVariant";
-import { Rules } from "./types/rules/rules";
+import { ruleDescriptors } from "./types/rules/ruleDescriptions";
 
 export class CoinSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       (player: EntityPlayer) => {
-        globals.$rules[0] = Rules.RULE_COIN_NORMAL;
+        globals.$rules[0] = ruleDescriptors[8];
         player.AddCoins(-999);
       },
       () => CoinSwitchState.next(),
@@ -14,14 +14,14 @@ export class CoinSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[0] = Rules.RULE_COIN_HURT;
+        globals.$rules[0] = ruleDescriptors[6];
       },
       () => CoinSwitchState.next(),
     ),
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateHappy();
-        globals.$rules[0] = Rules.RULE_COIN_INFINITE;
+        globals.$rules[0] = ruleDescriptors[7];
         player.AddCoins(999);
       },
       () => CoinSwitchState.next(),

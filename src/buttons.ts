@@ -2,36 +2,38 @@ import { BombSwitchState } from "./bombSwitchState";
 import { CoinSwitchState } from "./coinSwitchState";
 import globals from "./globals";
 import { KeySwitchState } from "./keySwitchState";
+import { SwitchVariant } from "./switchVariant";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
-import { SelectionStep } from "./types/selectionStep";
+import { Steps,Rules } from "./types/selection";
 
-const buttons = {
-  bombButton: BombSwitchState.default(),
-  keyButton: KeySwitchState.default(),
-  coinButton: CoinSwitchState.default(),
-};
+const buttons = new Map<Rules,SwitchVariant>([
+  [Rules.BOMB, BombSwitchState.default()],
+  [Rules.KEY, KeySwitchState.default()],
+  [Rules.COIN, CoinSwitchState.default()],
+]);
 
 export function togglePlate(plate: GridEntityPressurePlate | undefined) {
   if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH) {
-    plateOnCallback(plate, buttons.bombButton.callback);
-    plateOffCallback(plate, () => {
-      buttons.bombButton = buttons.bombButton.next();
-      buttons.bombButton.resetSwitch(plate);
+    plateOnCallback(plate, (player: EntityPlayer,rulesPlate : GridEntityPressurePlate )=>{
+      const rule = globals.$rulesPlates
+        .find(
+          (p) => p.plate.GetGridIndex() === rulesPlate.GetGridIndex()
+        )?.rules;
+        Isaac.DebugString(`pressed ${rule}`)
+        if(rule !== undefined){
+          buttons.get(rule)?.callback(player,plate);
+        }
     });
-  }
-  if (plate?.GetVariant() === GoutBeatEntities.KEY_SWITCH) {
-    plateOnCallback(plate, buttons.keyButton.callback);
     plateOffCallback(plate, () => {
-      buttons.keyButton = buttons.keyButton.next();
-      buttons.keyButton.resetSwitch(plate);
-    });
-  }
-  if (plate?.GetVariant() === GoutBeatEntities.COIN_SWITCH) {
-    plateOnCallback(plate, buttons.coinButton.callback);
-    plateOffCallback(plate, () => {
-      buttons.coinButton = buttons.coinButton.next();
-      buttons.coinButton.resetSwitch(plate);
+      const rule = globals.$rulesPlates
+        .find(
+          (p) => p.plate.GetGridIndex() === plate.GetGridIndex()
+        )?.rules;
+        if(rule !== undefined){
+          buttons.get(rule)?.next();
+          buttons.get(rule)?.resetSwitch(plate);
+        }
     });
   }
   if (plate?.GetVariant() === GoutBeatEntities.BOSS_SWITCH) {
@@ -40,8 +42,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         (bossSwitch) =>
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
       )?.objective;
-      globals.$step = SelectionStep.RULE_SELECTION;
-      Isaac.ExecuteCommand("goto s.default.13");
+      globals.$step = Steps.RULE_SELECTION;
     });
     plateOffCallback(plate, (player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;
@@ -50,6 +51,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         .forEach((entity) => {
           entity.plate.GetSprite().Play("Off", true);
         });
+        Isaac.ExecuteCommand("goto s.default.13");
     });
   }
 }

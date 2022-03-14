@@ -1,4 +1,4 @@
-import { Objectives } from "./raceGoal";
+import { Objectives } from "./selection";
 
 export interface ObjectiveSwitch {
   plate: GridEntity;

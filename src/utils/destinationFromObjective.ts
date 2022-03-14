@@ -1,4 +1,4 @@
-import { Objectives } from "../types/raceGoal";
+import { Objectives } from "../types/selection";
 
 export function DestinationFromObjective(obj: Objectives) {
   switch (obj) {

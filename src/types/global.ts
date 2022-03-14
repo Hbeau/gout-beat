@@ -1,33 +1,31 @@
 import { ObjectiveSwitch } from "./objectiveSwitch";
-import { Objectives } from "./raceGoal";
-import { Rules } from "./rules/rules";
+import { RuleDescription } from "./rules/ruleDescription";
 import { RuleSwitch } from "./ruleSwitch";
-import { SelectionStep } from "./selectionStep";
+import { Objectives, Steps } from "./selection";
 
 export class Global {
   private objective: Objectives | undefined;
-  private rules: Rules[];
+  private rules: RuleDescription[];
   private bossPlates: ObjectiveSwitch[];
   private rulesPlates: RuleSwitch[];
 
-	public get $rulesPlates(): RuleSwitch[] {
-		return this.rulesPlates;
-	}
+  public get $rulesPlates(): RuleSwitch[] {
+    return this.rulesPlates;
+  }
 
-	public set $rulesPlates(value: RuleSwitch[]) {
-		this.rulesPlates = value;
-	}
-
+  public set $rulesPlates(value: RuleSwitch[]) {
+    this.rulesPlates = value;
+  }
 
   private victory: boolean;
 
-  private step: SelectionStep | undefined;
+  private step: Steps | undefined;
 
-  public get $step(): SelectionStep | undefined {
+  public get $step(): Steps | undefined {
     return this.step;
   }
 
-  public set $step(value: SelectionStep | undefined) {
+  public set $step(value: Steps | undefined) {
     this.step = value;
   }
 
@@ -46,11 +44,11 @@ export class Global {
     this.objective = objective;
   }
 
-  public get $rules(): Rules[] {
+  public get $rules(): RuleDescription[] {
     return this.rules;
   }
 
-  public set $rules(value: Rules[]) {
+  public set $rules(value: RuleDescription[]) {
     this.rules = value;
   }
 

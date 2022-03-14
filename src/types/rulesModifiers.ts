@@ -1,4 +1,4 @@
-export enum PickupModifiers {
+export enum RulesModifiers {
   NORMAL,
   HURT,
   INFINITE,

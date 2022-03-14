@@ -1,9 +1,9 @@
 import globals from "../globals";
-import { SelectionStep } from "../types/selectionStep";
+import { Steps } from "../types/selection";
 
 export function postGameStarted() {
   globals.$bossPlates = [];
   globals.$rules = [];
-  globals.$step = SelectionStep.OBJECTIVE_SELECTION;
+  globals.$step = Steps.OBJECTIVE_SELECTION;
   Isaac.ExecuteCommand("goto s.default.13");
 }
