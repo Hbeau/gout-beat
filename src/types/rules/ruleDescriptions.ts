@@ -71,7 +71,7 @@ const ruleDescriptors: RuleDescription[] = [
   },
   {
     rule : Rules.ITEM,
-    gameText: "Blindly pick all pills",
+    gameText: "Blindly pick all Items",
     pickup: PickupVariant.PICKUP_COLLECTIBLE,
     modifier: RulesModifiers.BLIND,
   },

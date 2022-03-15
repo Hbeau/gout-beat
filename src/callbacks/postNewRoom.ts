@@ -25,6 +25,10 @@ function initSelectRoom() {
         setupBossRoom(room);
       }
     }
+    if(globals.$step === Steps.RULE_SELECTION && roomId === 84){
+      globals.$step = Steps.SELECTION_COMPLETE
+    }
+
   }
 }
 function postTheBeastRoom() {
@@ -60,6 +64,14 @@ function setupRulesRoom(room: Room) {
       globals.$rulesPlates.push({ plate, rules });
     }
   });
+  Isaac.Spawn(
+    EntityType.ENTITY_PICKUP,
+    PickupVariant.PICKUP_COLLECTIBLE,
+    CollectibleType.COLLECTIBLE_DEATH_CERTIFICATE,
+    Vector(320, 300),
+    Vector(0, 0),
+    undefined,
+  );
 }
 function clearRoom(room: Room) {
   for (let i = 0; i < 110; i++) {

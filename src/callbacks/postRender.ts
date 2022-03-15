@@ -40,7 +40,7 @@ function displayChallengeText() {
   // for (const entity of entities) {
   //   const playerRenderPos = Isaac.WorldToRenderPosition(entity.Position);
   //   Isaac.RenderText(
-  //     `${entity.Type}.${entity.Variant}`,
+  //     `${entity.Position.X}.${entity.Position.Y}`,
   //     playerRenderPos.X,
   //     playerRenderPos.Y,
   //     1,

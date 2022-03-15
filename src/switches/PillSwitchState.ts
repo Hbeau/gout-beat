@@ -6,7 +6,7 @@ export class PillSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       (player: EntityPlayer) => {
-        globals.$rules[3] = ruleDescriptors[5];
+        globals.$rules[3] = ruleDescriptors[10];
 
       },
       () => PillSwitchState.next(),
@@ -14,7 +14,7 @@ export class PillSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[3] = ruleDescriptors[3];
+        globals.$rules[3] = ruleDescriptors[9];
       },
       () => PillSwitchState.next(),
     ),

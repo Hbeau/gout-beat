@@ -21,6 +21,11 @@ function onPreEntitySpawn(
     Isaac.GetPlayer().UsePill(effect, color);
     Isaac.GetPlayer().AnimatePill(color);
   }
+  if(entityType === EntityType.ENTITY_PICKUP &&
+    variant === PickupVariant.PICKUP_COLLECTIBLE
+    && globals.$rules.includes(ruleDescriptors[11])){
+      
+    }
 }
 function replaceBigChest(
   entityType: EntityType,

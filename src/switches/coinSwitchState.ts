@@ -6,26 +6,26 @@ export class CoinSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       (player: EntityPlayer) => {
-        globals.$rules[0] = ruleDescriptors[8];
-        player.AddCoins(-999);
-      },
-      () => CoinSwitchState.next(),
-    ),
-    new SwitchVariant(
-      (player: EntityPlayer) => {
         player.AnimateSad();
         globals.$rules[0] = ruleDescriptors[6];
       },
       () => CoinSwitchState.next(),
-    ),
-    new SwitchVariant(
-      (player: EntityPlayer) => {
-        player.AnimateHappy();
-        globals.$rules[0] = ruleDescriptors[7];
-        player.AddCoins(999);
-      },
-      () => CoinSwitchState.next(),
-    ),
+      ),
+      new SwitchVariant(
+        (player: EntityPlayer) => {
+          player.AnimateHappy();
+          globals.$rules[0] = ruleDescriptors[7];
+          player.AddCoins(999);
+        },
+        () => CoinSwitchState.next(),
+        ),
+        new SwitchVariant(
+          (player: EntityPlayer) => {
+            globals.$rules[0] = ruleDescriptors[8];
+            player.AddCoins(-999);
+          },
+          () => CoinSwitchState.next(),
+        ),
   ];
 
   private static index = 0;
