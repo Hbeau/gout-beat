@@ -1,14 +1,14 @@
 import globals from "../globals";
 import { reloadTheBeast } from "../preventEnds";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
-import { Objectives,Rules,Steps } from "../types/selection";
+import { Objectives, Rules, Steps } from "../types/selection";
 
 export function initPostNewRoom(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
-const RULE_PLATE_INDEX = [34, 36, 54];
+const RULE_PLATE_INDEX = [34, 36, 54, 52, 50];
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
 function initSelectRoom() {
@@ -61,11 +61,9 @@ function setupRulesRoom(room: Room) {
     }
   });
 }
-function clearRoom(room: Room){
-  for(let i = 0;i < 110; i++ ){
+function clearRoom(room: Room) {
+  for (let i = 0; i < 110; i++) {
     const pp = room.GetGridEntity(i)?.ToPressurePlate();
     pp?.Destroy(true);
   }
-
 }
-

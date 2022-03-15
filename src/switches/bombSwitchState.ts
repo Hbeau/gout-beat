@@ -1,6 +1,6 @@
-import globals from "./globals";
-import { SwitchVariant } from "./switchVariant";
-import { ruleDescriptors } from "./types/rules/ruleDescriptions";
+import globals from "../globals";
+import { SwitchVariant } from "../switchVariant";
+import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 
 export class BombSwitchState {
   public static variants: SwitchVariant[] = [

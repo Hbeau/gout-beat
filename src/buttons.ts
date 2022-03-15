@@ -1,16 +1,20 @@
-import { BombSwitchState } from "./bombSwitchState";
-import { CoinSwitchState } from "./coinSwitchState";
+import { BombSwitchState } from "./switches/bombSwitchState";
+import { CoinSwitchState } from "./switches/coinSwitchState";
 import globals from "./globals";
-import { KeySwitchState } from "./keySwitchState";
+import { KeySwitchState } from "./switches/keySwitchState";
 import { SwitchVariant } from "./switchVariant";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
 import { Steps,Rules } from "./types/selection";
+import { PillSwitchState } from "./switches/PillSwitchState";
+import { ItemSwitchState } from "./switches/ItemSwitchState";
 
 const buttons = new Map<Rules,SwitchVariant>([
   [Rules.BOMB, BombSwitchState.default()],
   [Rules.KEY, KeySwitchState.default()],
   [Rules.COIN, CoinSwitchState.default()],
+  [Rules.PILL, PillSwitchState.default()],
+  [Rules.ITEM, ItemSwitchState.default()],
 ]);
 
 export function togglePlate(plate: GridEntityPressurePlate | undefined) {

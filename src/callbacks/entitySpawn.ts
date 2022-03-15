@@ -1,5 +1,6 @@
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
+import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 
 export function entitySpawnInit(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, onPreEntitySpawn);
@@ -13,6 +14,7 @@ function onPreEntitySpawn(
   if (
     entityType === EntityType.ENTITY_PICKUP &&
     variant === PickupVariant.PICKUP_PILL
+    && globals.$rules.includes(ruleDescriptors[9])
   ) {
     const color: PillColor = subType;
     const effect = Game().GetItemPool().GetPillEffect(color);

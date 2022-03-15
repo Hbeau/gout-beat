@@ -57,6 +57,30 @@ const ruleDescriptors: RuleDescription[] = [
     pickup: PickupVariant.PICKUP_COIN,
     modifier: RulesModifiers.NORMAL,
   },
+  {
+    rule : Rules.PILL,
+    gameText: "Blindly eat all pills",
+    pickup: PickupVariant.PICKUP_PILL,
+    modifier: RulesModifiers.BLIND,
+  },
+  {
+    rule : Rules.PILL,
+    gameText: "No Pill rules",
+    pickup: PickupVariant.PICKUP_PILL,
+    modifier: RulesModifiers.NORMAL,
+  },
+  {
+    rule : Rules.ITEM,
+    gameText: "Blindly pick all pills",
+    pickup: PickupVariant.PICKUP_COLLECTIBLE,
+    modifier: RulesModifiers.BLIND,
+  },
+  {
+    rule : Rules.ITEM,
+    gameText: "No Items rules",
+    pickup: PickupVariant.PICKUP_COLLECTIBLE,
+    modifier: RulesModifiers.NORMAL,
+  },
 ];
 
 export { ruleDescriptors };
