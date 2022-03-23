@@ -3,6 +3,7 @@ import { init as entityKillInit } from "./callbacks/entityKill";
 import { entitySpawnInit } from "./callbacks/entitySpawn";
 import { initGridEntityCollision } from "./callbacks/gridEntitycollision";
 import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
+import { initInputAction } from "./callbacks/inputAction";
 import { pickupInit } from "./callbacks/pickup";
 import { postGameStarted } from "./callbacks/postGameStarted";
 import { initPostItemPickup } from "./callbacks/postItemPickup";
@@ -28,6 +29,7 @@ export function main(): void {
   initPostNewRoom(mod);
   initPostItemPickup(modUpgraded);
   initGridEntityCollision(modUpgraded);
+  initInputAction(mod)
 }
 
 function boostIsaacForTest() {

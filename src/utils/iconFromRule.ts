@@ -8,6 +8,12 @@ export function IconFromRule(rule: Rules) {
       return 0;
     case Rules.KEY:
       return 1;
+    case Rules.PILL:
+        return 1;
+    case Rules.ITEM:
+        return 1;
+    case Rules.TEAR:
+        return 1;
     default:
       return 3;
   }

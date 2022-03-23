@@ -8,7 +8,7 @@ export function initPostNewRoom(mod: Mod) {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
-const RULE_PLATE_INDEX = [34, 36, 54, 52, 50];
+const RULE_PLATE_INDEX = [34, 36, 54, 52, 50, 38];
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
 function initSelectRoom() {
@@ -17,16 +17,20 @@ function initSelectRoom() {
     if (roomId === -3) {
       const room = Game().GetRoom();
       if (globals.$step === Steps.RULE_SELECTION) {
+        globals.$showRules = true;
         clearRoom(room);
         setupRulesRoom(room);
+
       }
       if (globals.$step === Steps.OBJECTIVE_SELECTION) {
         clearRoom(room);
         setupBossRoom(room);
+
       }
     }
     if(globals.$step === Steps.RULE_SELECTION && roomId === 84){
       globals.$step = Steps.SELECTION_COMPLETE
+      globals.$showRules = false;
     }
 
   }

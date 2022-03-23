@@ -81,6 +81,24 @@ const ruleDescriptors: RuleDescription[] = [
     pickup: PickupVariant.PICKUP_COLLECTIBLE,
     modifier: RulesModifiers.NORMAL,
   },
+  {
+    rule : Rules.TEAR,
+    gameText: "No tear",
+    pickup: PickupVariant.PICKUP_NULL,
+    modifier: RulesModifiers.BLIND,
+  },
+  {
+    rule : Rules.TEAR,
+    gameText: "Inverted tear",
+    pickup: PickupVariant.PICKUP_NULL,
+    modifier: RulesModifiers.HURT,
+  },
+  {
+    rule : Rules.TEAR,
+    gameText: "No tear rules",
+    pickup: PickupVariant.PICKUP_NULL,
+    modifier: RulesModifiers.NORMAL,
+  },
 ];
 
 export { ruleDescriptors };

@@ -15,26 +15,20 @@ export function postRenderInit(mod: Mod) {
 
 function displayChallengeText() {
 
-  Isaac.RenderText(
-    `${globals.$step?.toString()}`,
-    defaultX + 250,
-    defaultY - 10,
-    1,
-    1,
-    1,
-    255,
-  );
-  if (globals.$objective !== undefined) {
-    renderText(globals.$objective, 0, -10);
-  }
   if (globals.$step === Steps.OBJECTIVE_SELECTION) {
     globals.$bossPlates.forEach((plate) => renderBossSprite(plate));
   }
   if (globals.$step === Steps.RULE_SELECTION) {
     globals.$rulesPlates.forEach((plate) => renderRuleSprite(plate));
-    globals.$rules.forEach((rule, index) => {
-      renderText(rule.gameText, 0, 10 * index)
-    });
+
+  }
+  if(globals.$showRules){
+    if (globals.$objective !== undefined) {
+      renderText(globals.$objective, 0, -10);
+      globals.$rules.forEach((rule, index) => {
+        renderText(rule.gameText, 0, 10 * index)
+      });
+    }
   }
   // const entities = Isaac.GetRoomEntities();
   // for (const entity of entities) {

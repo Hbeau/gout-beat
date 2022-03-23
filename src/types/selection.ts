@@ -13,7 +13,8 @@ export enum Rules {
   KEY = "Key",
   COIN = "Coin",
   ITEM = "Item",
-  PILL = "Pill"
+  PILL = "Pill",
+  TEAR = "Tear"
 }
 export enum Steps {
   OBJECTIVE_SELECTION = "objective",

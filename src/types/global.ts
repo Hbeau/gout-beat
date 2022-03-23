@@ -8,6 +8,15 @@ export class Global {
   private rules: RuleDescription[];
   private bossPlates: ObjectiveSwitch[];
   private rulesPlates: RuleSwitch[];
+  private showRules: boolean;
+
+	public get $showRules(): boolean {
+		return this.showRules;
+	}
+
+	public set $showRules(value: boolean) {
+		this.showRules = value;
+	}
 
   public get $rulesPlates(): RuleSwitch[] {
     return this.rulesPlates;
@@ -34,6 +43,7 @@ export class Global {
     this.bossPlates = [];
     this.rulesPlates = [];
     this.victory = false;
+    this.showRules = false;
   }
 
   public get $objective(): Objectives | undefined {
