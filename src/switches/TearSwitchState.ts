@@ -7,7 +7,6 @@ export class TearSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         globals.$rules[5] = ruleDescriptors[13];
-
       },
       () => TearSwitchState.next(),
     ),

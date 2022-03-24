@@ -10,22 +10,22 @@ export class BombSwitchState {
         globals.$rules[0] = ruleDescriptors[0];
       },
       () => BombSwitchState.next(),
-      ),
-      new SwitchVariant(
-        (player: EntityPlayer) => {
-          player.AnimateHappy();
-          globals.$rules[0] = ruleDescriptors[1];
-          player.AddGoldenBomb();
-        },
-        () => BombSwitchState.next(),
-        ),
-        new SwitchVariant(
-          (player: EntityPlayer,plate :GridEntityPressurePlate) => {
-            globals.$rules[0] = ruleDescriptors[2];
-            player.RemoveGoldenBomb();
-          },
-          () => BombSwitchState.next(),
-        ),
+    ),
+    new SwitchVariant(
+      (player: EntityPlayer) => {
+        player.AnimateHappy();
+        globals.$rules[0] = ruleDescriptors[1];
+        player.AddGoldenBomb();
+      },
+      () => BombSwitchState.next(),
+    ),
+    new SwitchVariant(
+      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+        globals.$rules[0] = ruleDescriptors[2];
+        player.RemoveGoldenBomb();
+      },
+      () => BombSwitchState.next(),
+    ),
   ];
 
   private static index = 0;

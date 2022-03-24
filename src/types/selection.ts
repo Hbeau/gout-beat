@@ -14,7 +14,7 @@ export enum Rules {
   COIN = "Coin",
   ITEM = "Item",
   PILL = "Pill",
-  TEAR = "Tear"
+  TEAR = "Tear",
 }
 export enum Steps {
   OBJECTIVE_SELECTION = "objective",
@@ -22,4 +22,3 @@ export enum Steps {
   STATER_SELECTION = "starter",
   SELECTION_COMPLETE = "complete",
 }
-

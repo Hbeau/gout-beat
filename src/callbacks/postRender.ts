@@ -14,19 +14,17 @@ export function postRenderInit(mod: Mod) {
 }
 
 function displayChallengeText() {
-
   if (globals.$step === Steps.OBJECTIVE_SELECTION) {
     globals.$bossPlates.forEach((plate) => renderBossSprite(plate));
   }
   if (globals.$step === Steps.RULE_SELECTION) {
     globals.$rulesPlates.forEach((plate) => renderRuleSprite(plate));
-
   }
-  if(globals.$showRules){
+  if (globals.$showRules) {
     if (globals.$objective !== undefined) {
       renderText(globals.$objective, 0, -10);
       globals.$rules.forEach((rule, index) => {
-        renderText(rule.gameText, 0, 10 * index)
+        renderText(rule.gameText, 0, 10 * index);
       });
     }
   }
@@ -43,19 +41,10 @@ function displayChallengeText() {
   //     255,
   //   );
   // }
-
 }
 
-function renderText(text:string,x:int,y:int){
-      Isaac.RenderText(
-      text,
-      defaultX + x,
-      defaultY + y,
-      1,
-      1,
-      1,
-      255,
-    );
+function renderText(text: string, x: int, y: int) {
+  Isaac.RenderText(text, defaultX + x, defaultY + y, 1, 1, 1, 255);
 }
 
 function renderBossSprite(obj: ObjectiveSwitch) {

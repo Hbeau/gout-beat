@@ -20,19 +20,16 @@ function initSelectRoom() {
         globals.$showRules = true;
         clearRoom(room);
         setupRulesRoom(room);
-
       }
       if (globals.$step === Steps.OBJECTIVE_SELECTION) {
         clearRoom(room);
         setupBossRoom(room);
-
       }
     }
-    if(globals.$step === Steps.RULE_SELECTION && roomId === 84){
-      globals.$step = Steps.SELECTION_COMPLETE
+    if (globals.$step === Steps.RULE_SELECTION && roomId === 84) {
+      globals.$step = Steps.SELECTION_COMPLETE;
       globals.$showRules = false;
     }
-
   }
 }
 function postTheBeastRoom() {

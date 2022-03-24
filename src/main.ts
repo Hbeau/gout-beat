@@ -29,7 +29,7 @@ export function main(): void {
   initPostNewRoom(mod);
   initPostItemPickup(modUpgraded);
   initGridEntityCollision(modUpgraded);
-  initInputAction(mod)
+  initInputAction(mod);
 }
 
 function boostIsaacForTest() {

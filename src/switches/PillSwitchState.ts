@@ -7,7 +7,6 @@ export class PillSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         globals.$rules[3] = ruleDescriptors[10];
-
       },
       () => PillSwitchState.next(),
     ),

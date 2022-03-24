@@ -1,15 +1,15 @@
+import globals from "./globals";
 import { BombSwitchState } from "./switches/bombSwitchState";
 import { CoinSwitchState } from "./switches/coinSwitchState";
-import globals from "./globals";
+import { ItemSwitchState } from "./switches/ItemSwitchState";
 import { KeySwitchState } from "./switches/keySwitchState";
+import { PillSwitchState } from "./switches/PillSwitchState";
 import { SwitchVariant } from "./switchVariant";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
-import { Steps,Rules } from "./types/selection";
-import { PillSwitchState } from "./switches/PillSwitchState";
-import { ItemSwitchState } from "./switches/ItemSwitchState";
+import { Rules, Steps } from "./types/selection";
 
-const buttons = new Map<Rules,SwitchVariant>([
+const buttons = new Map<Rules, SwitchVariant>([
   [Rules.BOMB, BombSwitchState.default()],
   [Rules.KEY, KeySwitchState.default()],
   [Rules.COIN, CoinSwitchState.default()],
@@ -19,28 +19,29 @@ const buttons = new Map<Rules,SwitchVariant>([
 
 export function togglePlate(plate: GridEntityPressurePlate | undefined) {
   if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH) {
-    plateOnCallback(plate, (player: EntityPlayer,rulesPlate : GridEntityPressurePlate )=>{
-      const rule = globals.$rulesPlates
-        .find(
-          (p) => p.plate.GetGridIndex() === rulesPlate.GetGridIndex()
+    plateOnCallback(
+      plate,
+      (player: EntityPlayer, rulesPlate: GridEntityPressurePlate) => {
+        const rule = globals.$rulesPlates.find(
+          (p) => p.plate.GetGridIndex() === rulesPlate.GetGridIndex(),
         )?.rules;
 
-        if(rule !== undefined){
-          buttons.get(rule)?.callback(player,plate);
+        if (rule !== undefined) {
+          buttons.get(rule)?.callback(player, plate);
         }
-    });
+      },
+    );
     plateOffCallback(plate, () => {
-      const rule = globals.$rulesPlates
-        .find(
-          (p) => p.plate.GetGridIndex() === plate.GetGridIndex()
-        )?.rules;
-        if(rule !== undefined){
-          const button = buttons.get(rule)?.next();
-          if(button !== undefined){
-          buttons.set(rule, button)
+      const rule = globals.$rulesPlates.find(
+        (p) => p.plate.GetGridIndex() === plate.GetGridIndex(),
+      )?.rules;
+      if (rule !== undefined) {
+        const button = buttons.get(rule)?.next();
+        if (button !== undefined) {
+          buttons.set(rule, button);
           button?.resetSwitch(plate);
         }
-        }
+      }
     });
   }
   if (plate?.GetVariant() === GoutBeatEntities.BOSS_SWITCH) {

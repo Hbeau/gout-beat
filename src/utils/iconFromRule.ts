@@ -9,11 +9,11 @@ export function IconFromRule(rule: Rules) {
     case Rules.KEY:
       return 1;
     case Rules.PILL:
-        return 1;
+      return 1;
     case Rules.ITEM:
-        return 1;
+      return 1;
     case Rules.TEAR:
-        return 1;
+      return 1;
     default:
       return 3;
   }
