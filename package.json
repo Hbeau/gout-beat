@@ -18,6 +18,7 @@
     "isaacscript-lint": "^1.0.91"
   },
   "devDependencies": {
-    "prettier": "^2.6.0"
+    "prettier": "^2.6.0",
+    "typescript-to-lua": "^1.4.2"
   }
 }
