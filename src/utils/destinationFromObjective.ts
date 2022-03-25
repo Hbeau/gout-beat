@@ -1,6 +1,6 @@
 import { Objectives } from "../types/selection";
 
-export function DestinationFromObjective(obj: Objectives) {
+export function DestinationFromObjective(obj: Objectives): number {
   switch (obj) {
     case Objectives.BLUE_BABY:
       return 5;

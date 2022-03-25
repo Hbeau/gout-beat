@@ -5,7 +5,7 @@ import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 export class TearSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
-      (player: EntityPlayer) => {
+      () => {
         globals.$rules[5] = ruleDescriptors[13];
       },
       () => TearSwitchState.next(),

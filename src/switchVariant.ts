@@ -8,11 +8,4 @@ export class SwitchVariant {
     this.callback = callback;
     this.next = next;
   }
-
-  public resetSwitch(plate: GridEntityPressurePlate | undefined): void {
-    if (plate !== undefined) {
-      plate.State = PressurePlateState.UNPRESSED;
-      plate.GetSprite().Play("Off", true);
-    }
-  }
 }

@@ -1,7 +1,6 @@
 import { upgradeMod } from "isaacscript-common";
 import { init as entityKillInit } from "./callbacks/entityKill";
 import { entitySpawnInit } from "./callbacks/entitySpawn";
-import { initGridEntityCollision } from "./callbacks/gridEntitycollision";
 import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
 import { initInputAction } from "./callbacks/inputAction";
 import { pickupInit } from "./callbacks/pickup";
@@ -28,7 +27,6 @@ export function main(): void {
   entitySpawnInit(mod);
   initPostNewRoom(mod);
   initPostItemPickup(modUpgraded);
-  initGridEntityCollision(modUpgraded);
   initInputAction(mod);
 }
 

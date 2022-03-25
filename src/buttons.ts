@@ -17,7 +17,7 @@ const buttons = new Map<Rules, SwitchVariant>([
   [Rules.ITEM, ItemSwitchState.default()],
 ]);
 
-export function togglePlate(plate: GridEntityPressurePlate | undefined) {
+export function togglePlate(plate: GridEntityPressurePlate | undefined): void {
   if (plate?.GetVariant() === GoutBeatEntities.BOMB_SWITCH) {
     plateOnCallback(
       plate,
@@ -39,13 +39,13 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
         const button = buttons.get(rule)?.next();
         if (button !== undefined) {
           buttons.set(rule, button);
-          button?.resetSwitch(plate);
+          resetSwitch(plate);
         }
       }
     });
   }
   if (plate?.GetVariant() === GoutBeatEntities.BOSS_SWITCH) {
-    plateOnCallback(plate, (player, bossPlate) => {
+    plateOnCallback(plate, (_player, bossPlate) => {
       globals.$objective = globals.$bossPlates.find(
         (bossSwitch) =>
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
@@ -53,7 +53,7 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined) {
       globals.$step = Steps.RULE_SELECTION;
       Isaac.ExecuteCommand("goto s.default.13");
     });
-    plateOffCallback(plate, (player, pp) => {
+    plateOffCallback(plate, (_player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;
       globals.$bossPlates
         .filter((p) => p.objective !== globals.$objective)
@@ -88,5 +88,11 @@ function plateOffCallback(
   ) {
     plate.GetSaveState().VarData = 0;
     callback(Isaac.GetPlayer(), plate);
+  }
+}
+function resetSwitch(plate: GridEntityPressurePlate | undefined) {
+  if (plate !== undefined) {
+    plate.State = PressurePlateState.UNPRESSED;
+    plate.GetSprite().Play("Off", true);
   }
 }

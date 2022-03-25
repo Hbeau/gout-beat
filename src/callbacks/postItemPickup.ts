@@ -1,11 +1,7 @@
-import {
-  ModCallbacksCustom,
-  ModUpgraded,
-  PickingUpItem,
-} from "isaacscript-common";
+import { ModCallbacksCustom, ModUpgraded } from "isaacscript-common";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 
-export function initPostItemPickup(mod: ModUpgraded) {
+export function initPostItemPickup(mod: ModUpgraded): void {
   mod.AddCallbackCustom(
     ModCallbacksCustom.MC_POST_ITEM_PICKUP,
     onItemPickup,
@@ -13,8 +9,7 @@ export function initPostItemPickup(mod: ModUpgraded) {
     GoutBeatEntities.WOODEN_PIPE,
   );
 }
-function onItemPickup(player: EntityPlayer, pickingUpItem: PickingUpItem) {
-  Isaac.DebugString(" get GG+1");
+function onItemPickup() {
   SFXManager().Play(GoutBeatEntities.RUN_VICTORY);
   Game().Fadeout(0.1, FadeoutTarget.RESTART_RUN_LAP);
 }

@@ -20,7 +20,7 @@ export class BombSwitchState {
       () => BombSwitchState.next(),
     ),
     new SwitchVariant(
-      (player: EntityPlayer, plate: GridEntityPressurePlate) => {
+      (player: EntityPlayer) => {
         globals.$rules[0] = ruleDescriptors[2];
         player.RemoveGoldenBomb();
       },

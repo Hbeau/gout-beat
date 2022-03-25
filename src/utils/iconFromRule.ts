@@ -1,6 +1,6 @@
 import { Rules } from "../types/selection";
 
-export function IconFromRule(rule: Rules) {
+export function IconFromRule(rule: Rules): number {
   switch (rule) {
     case Rules.BOMB:
       return 2;

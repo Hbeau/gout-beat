@@ -3,7 +3,7 @@ import { reloadTheBeast } from "../preventEnds";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { Objectives, Rules, Steps } from "../types/selection";
 
-export function initPostNewRoom(mod: Mod) {
+export function initPostNewRoom(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }

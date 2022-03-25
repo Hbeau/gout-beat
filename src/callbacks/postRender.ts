@@ -9,7 +9,7 @@ const HALF_FADED_COLOR = Color(1, 1, 1, 0.5, 0, 0, 0);
 const defaultX = 40;
 const defaultY = 35;
 
-export function postRenderInit(mod: Mod) {
+export function postRenderInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_RENDER, displayChallengeText);
 }
 

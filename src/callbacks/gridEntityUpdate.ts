@@ -1,7 +1,7 @@
 import { ModCallbacksCustom, ModUpgraded } from "isaacscript-common";
 import { togglePlate } from "../buttons";
 
-export function init(modUpgraded: ModUpgraded) {
+export function init(modUpgraded: ModUpgraded): void {
   modUpgraded.AddCallbackCustom(
     ModCallbacksCustom.MC_POST_GRID_ENTITY_UPDATE,
     pressurePlateListener,

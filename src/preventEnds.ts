@@ -24,7 +24,7 @@ export function postEntityKillTheBeast(entity: Entity): void {
   }
 }
 
-export function postEntityTheLamb(_entity: Entity) {
+export function postEntityTheLamb(_entity: Entity): void {
   if (allLambEntitiesDead()) {
     if (globals.$objective === Objectives.THE_LAMB) {
       globals.$victory = true;
@@ -32,7 +32,7 @@ export function postEntityTheLamb(_entity: Entity) {
     }
   }
 }
-export function postEntityKillIsaac(entity: Entity) {
+export function postEntityKillIsaac(entity: Entity): void {
   if (entity.Type === EntityType.ENTITY_ISAAC) {
     if (globals.$objective === Objectives.BLUE_BABY && entity.Variant === 1) {
       globals.$victory = true;
@@ -40,7 +40,7 @@ export function postEntityKillIsaac(entity: Entity) {
     }
   }
 }
-export function postEntityKillHush(entity: Entity) {
+export function postEntityKillHush(entity: Entity): void {
   if (entity.Type === EntityType.ENTITY_HUSH) {
     if (globals.$objective === Objectives.HUSH) {
       globals.$victory = true;
@@ -48,7 +48,7 @@ export function postEntityKillHush(entity: Entity) {
     }
   }
 }
-export function postEntityKillMother(entity: Entity) {
+export function postEntityKillMother(entity: Entity): void {
   if (entity.Type === EntityType.ENTITY_MOTHER && entity.Variant === 10) {
     if (globals.$objective === Objectives.MOTHER) {
       globals.$victory = true;
@@ -87,7 +87,7 @@ function emulateRoomClear() {
     undefined,
   );
 }
-export function reloadTheBeast() {
+export function reloadTheBeast(): void {
   Isaac.Spawn(
     EntityType.ENTITY_BEAST,
     0,

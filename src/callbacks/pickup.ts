@@ -1,7 +1,7 @@
 import globals from "../globals";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 
-export function pickupInit(mod: Mod) {
+export function pickupInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, onPickUp);
 }
 function onPickUp(entity: EntityPickup, collider: Entity) {

@@ -2,7 +2,7 @@ import globals from "../globals";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 import { Steps } from "../types/selection";
 
-export function postGameStarted() {
+export function postGameStarted(): void {
   globals.$bossPlates = [];
   globals.$rules = [
     ruleDescriptors[2],

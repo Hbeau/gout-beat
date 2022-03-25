@@ -1,6 +1,6 @@
 import globals from "../globals";
 
-export function initInputAction(mod: Mod) {
+export function initInputAction(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_UPDATE, onTabPress);
 }
 

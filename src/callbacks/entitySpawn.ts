@@ -2,11 +2,12 @@ import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 
-export function entitySpawnInit(mod: Mod) {
+export function entitySpawnInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, onPreEntitySpawn);
   mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, replaceBigChest);
 }
 
+// eslint-disable-next-line consistent-return
 function onPreEntitySpawn(
   entityType: EntityType,
   variant: int,
@@ -54,10 +55,10 @@ function swallowPill(subType: int) {
   }
 }
 
+// eslint-disable-next-line consistent-return
 function replaceBigChest(
   entityType: EntityType,
   variant: int,
-  subType: int,
 ): void | [number, number, number, number] {
   if (
     entityType === EntityType.ENTITY_PICKUP &&

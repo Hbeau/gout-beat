@@ -7,7 +7,7 @@ import {
   postEntityTheLamb,
 } from "../preventEnds";
 
-export function init(mod: Mod) {
+export function init(mod: Mod): void {
   mod.AddCallback(
     ModCallbacks.MC_POST_ENTITY_KILL,
     theLamb,
@@ -52,7 +52,6 @@ function isaac(entity: Entity) {
   postEntityKillIsaac(entity);
 }
 
-function delirium(entity: Entity) {}
 function hush(entity: Entity) {
   postEntityKillHush(entity);
 }

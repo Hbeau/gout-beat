@@ -6,6 +6,7 @@ export class ItemSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       (player: EntityPlayer) => {
+        player.AnimateSad();
         globals.$rules[4] = ruleDescriptors[12];
       },
       () => ItemSwitchState.next(),
