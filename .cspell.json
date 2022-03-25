@@ -1,8 +1,12 @@
 {
     "version": "0.2",
     "words": [
+        "BIGCHEST",
         "dbaeumer",
+        "hudpickups",
         "isaacscript",
+        "itemdungeon",
+        "PILLEFFECT",
         "sarisia",
         "steamapps",
         "technote",
