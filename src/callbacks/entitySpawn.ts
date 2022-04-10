@@ -3,56 +3,63 @@ import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 
 export function entitySpawnInit(mod: Mod): void {
-  mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, onPreEntitySpawn);
+  mod.AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, OnPickUpdate);
   mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, replaceBigChest);
 }
 
-// eslint-disable-next-line consistent-return
-function onPreEntitySpawn(
-  entityType: EntityType,
-  variant: int,
-  subType: int,
-): void | [number, number, number, number] {
+function OnPickUpdate(entity: EntityPickup) {
   if (
-    entityType === EntityType.ENTITY_PICKUP &&
-    variant === PickupVariant.PICKUP_PILL &&
+    entity.Variant === PickupVariant.PICKUP_PILL &&
     globals.$rules.includes(ruleDescriptors[9])
   ) {
-    swallowPill(subType);
-    return [EntityType.ENTITY_EFFECT, EffectVariant.POOF01, 0, 0];
+    swallowPill(entity);
+    entity.Remove();
   }
   if (
-    entityType === EntityType.ENTITY_PICKUP &&
-    variant === PickupVariant.PICKUP_COLLECTIBLE &&
+    entity.Variant === PickupVariant.PICKUP_COLLECTIBLE &&
     globals.$rules.includes(ruleDescriptors[11])
   ) {
-    const room = Game().GetRoom();
-    const pool = Game().GetItemPool();
-    const itemPoolType = pool.GetPoolForRoom(
-      room.GetType(),
-      Game().GetSeeds().GetNextSeed(),
+    pickupCollectible(entity);
+    Isaac.Spawn(
+      EntityType.ENTITY_EFFECT,
+      EffectVariant.POOF01,
+      0,
+      entity.Position,
+      Vector.Zero,
+      undefined,
     );
-    const collectible = pool.GetCollectible(itemPoolType);
-    Isaac.GetPlayer().AddCollectible(collectible);
-    return [EntityType.ENTITY_EFFECT, EffectVariant.POOF01, 0, 0];
+    entity.Remove();
   }
 }
-
-function swallowPill(subType: int) {
-  const g = Game();
-  let color: PillColor;
-  if (subType === 0) {
-    color = g.GetItemPool().GetPill(g.GetSeeds().GetNextSeed());
-  } else {
-    color = subType;
+function pickupCollectible(entity: EntityPickup) {
+  const collectible = entity.SubType;
+  Isaac.GetPlayer().AddCollectible(collectible);
+  const itemConfig = Isaac.GetItemConfig().GetCollectible(collectible);
+  if (itemConfig !== undefined) {
+    Game().GetHUD().ShowItemText(Isaac.GetPlayer(), itemConfig);
   }
+  entity.PlayPickupSound();
+  Isaac.Spawn(
+    EntityType.ENTITY_EFFECT,
+    EffectVariant.POOF01,
+    0,
+    entity.Position,
+    Vector.Zero,
+    undefined,
+  );
+  Isaac.GetPlayer().AnimateCollectible(collectible);
+}
+
+function swallowPill(entity: EntityPickup) {
+  const g = Game();
   const player = Isaac.GetPlayer();
-  const effect = g.GetItemPool().GetPillEffect(color, player);
+  const effect = g.GetItemPool().GetPillEffect(entity.SubType, player);
   if (effect !== PillEffect.PILLEFFECT_NULL) {
-    player.UsePill(effect, color);
-    player.AnimatePill(color);
+    player.UsePill(effect, entity.SubType);
+    player.AnimatePill(entity.SubType);
     player.EvaluateItems();
   }
+  return [EntityType.ENTITY_EFFECT, EffectVariant.POOF01, 0, 0];
 }
 
 // eslint-disable-next-line consistent-return
