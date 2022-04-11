@@ -1,5 +1,5 @@
 <sounds root="sfx/">
 	<sound name="Run Victory">
-		<sample weight="1" path="gare-au-gout-beat-georges-brasseur.ogg" />
+		<sample weight="1" path="gare-au-gout-beat.wav" />
 	</sound>
 </sounds>
