@@ -23,7 +23,6 @@ export function postGameStarted(): void {
   SFXManager().Preload(Isaac.GetSoundIdByName("Run Victory"));
   const l = Game().GetLevel();
   if (l.GetAbsoluteStage() === 1) {
-    Isaac.ConsoleOutput(`${GoutBeatEntities.CURSE_OF_TUESDAY}`);
     const curse = 1 << (GoutBeatEntities.CURSE_OF_TUESDAY - 1);
     l.AddCurse(curse, false);
   }
