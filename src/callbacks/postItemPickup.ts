@@ -11,5 +11,5 @@ export function initPostItemPickup(mod: ModUpgraded): void {
 }
 function onItemPickup() {
   SFXManager().Play(GoutBeatEntities.RUN_VICTORY);
-  Game().Fadeout(0.1, FadeoutTarget.RESTART_RUN_LAP);
+  Game().Fadeout(2, FadeoutTarget.RESTART_RUN_LAP);
 }

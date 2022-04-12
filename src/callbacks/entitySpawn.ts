@@ -1,6 +1,7 @@
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
+import { IsInHistory } from "../utils/utils";
 
 export function entitySpawnInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, OnPickUpdate);
@@ -13,24 +14,29 @@ function OnPickUpdate(entity: EntityPickup) {
     globals.$rules.includes(ruleDescriptors[9])
   ) {
     swallowPill(entity);
-    entity.Remove();
+    poof(entity);
   }
   if (
     entity.Variant === PickupVariant.PICKUP_COLLECTIBLE &&
+    IsInHistory(entity.SubType) &&
     globals.$rules.includes(ruleDescriptors[11])
   ) {
     pickupCollectible(entity);
-    Isaac.Spawn(
-      EntityType.ENTITY_EFFECT,
-      EffectVariant.POOF01,
-      0,
-      entity.Position,
-      Vector.Zero,
-      undefined,
-    );
-    entity.Remove();
+    poof(entity);
   }
 }
+function poof(entity: Entity) {
+  entity.Remove();
+  Isaac.Spawn(
+    EntityType.ENTITY_EFFECT,
+    EffectVariant.POOF01,
+    0,
+    entity.Position,
+    Vector.Zero,
+    undefined,
+  );
+}
+
 function pickupCollectible(entity: EntityPickup) {
   const collectible = entity.SubType;
   Isaac.GetPlayer().AddCollectible(collectible);
