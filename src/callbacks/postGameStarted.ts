@@ -1,4 +1,5 @@
 import globals from "../globals";
+import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 import { Steps } from "../types/selection";
 
@@ -20,5 +21,10 @@ export function postGameStarted(): void {
     Isaac.GetCostumeIdByPath("gfx/characters/8265_goutbeat.anm2"),
   );
   SFXManager().Preload(Isaac.GetSoundIdByName("Run Victory"));
-  Game().GetHUD();
+  const l = Game().GetLevel();
+  if (l.GetAbsoluteStage() === 1) {
+    Isaac.ConsoleOutput(`${GoutBeatEntities.CURSE_OF_TUESDAY}`);
+    const curse = 1 << (GoutBeatEntities.CURSE_OF_TUESDAY - 1);
+    l.AddCurse(curse, false);
+  }
 }
