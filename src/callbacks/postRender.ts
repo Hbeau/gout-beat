@@ -7,7 +7,7 @@ import { IconFromRule } from "../utils/iconFromRule";
 
 const HALF_FADED_COLOR = Color(1, 1, 1, 0.5, 0, 0, 0);
 const defaultX = 40;
-const defaultY = 35;
+const defaultY = 20;
 
 export function postRenderInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_RENDER, displayChallengeText);
@@ -20,11 +20,11 @@ function displayChallengeText() {
   if (globals.$step === Steps.RULE_SELECTION) {
     globals.$rulesPlates.forEach((plate) => renderRuleSprite(plate));
   }
-  if (globals.$showRules) {
+  if (globals.$showRules || globals.$step === Steps.RULE_SELECTION) {
     if (globals.$objective !== undefined) {
-      renderText(globals.$objective, 0, -10);
+      renderText(globals.$objective, defaultX, defaultY - 10);
       globals.$rules.forEach((rule, index) => {
-        renderText(rule.gameText, 0, 10 * index);
+        renderText(rule.gameText, defaultX, defaultY + 10 * index);
       });
     }
   }
