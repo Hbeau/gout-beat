@@ -17,4 +17,6 @@ export class GoutBeatEntities {
 
   // Sounds
   public static readonly RUN_VICTORY = Isaac.GetSoundIdByName("Run Victory");
+
+  public static readonly CURSE_OF_TUESDAY = Isaac.GetCurseIdByName("Curse of Tuesday");
 }

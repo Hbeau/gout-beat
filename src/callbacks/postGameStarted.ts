@@ -17,7 +17,6 @@ export function postGameStarted(): void {
   Isaac.GetPlayer().AddNullCostume(
     Isaac.GetCostumeIdByPath("gfx/characters/8265_goutbeat.anm2"),
   );
-  Isaac.ConsoleOutput(`sound :${Isaac.GetSoundIdByName("Run Victory")}`);
   SFXManager().Preload(Isaac.GetSoundIdByName("Run Victory"));
-  SFXManager().Play(Isaac.GetSoundIdByName("Run Victory"));
+  Game().GetHUD();
 }

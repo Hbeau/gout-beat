@@ -3,6 +3,7 @@ import { init as entityKillInit } from "./callbacks/entityKill";
 import { entitySpawnInit } from "./callbacks/entitySpawn";
 import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
 import { initInputAction } from "./callbacks/inputAction";
+import { levelStartInit } from "./callbacks/levelStart";
 import { pickupInit } from "./callbacks/pickup";
 import { postGameStarted } from "./callbacks/postGameStarted";
 import { initPostItemPickup } from "./callbacks/postItemPickup";
@@ -25,6 +26,7 @@ export function main(): void {
   postRenderInit(mod);
   pickupInit(mod);
   entitySpawnInit(mod);
+  levelStartInit(mod);
   initPostNewRoom(mod);
   initPostItemPickup(modUpgraded);
   initInputAction(mod);

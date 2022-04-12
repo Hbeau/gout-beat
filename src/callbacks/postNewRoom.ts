@@ -8,7 +8,7 @@ export function initPostNewRoom(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
-const RULE_PLATE_INDEX = [34, 36, 54, 52, 50, 38];
+const RULE_PLATE_INDEX = [37, 67, 84, 71, 80, 63];
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
 function initSelectRoom() {
