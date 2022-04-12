@@ -16,4 +16,9 @@ export function postGameStarted(): void {
   ];
   globals.$step = Steps.OBJECTIVE_SELECTION;
   Isaac.ExecuteCommand("goto s.default.13");
+  Isaac.GetPlayer().AddNullCostume(
+    Isaac.GetCostumeIdByPath("gfx/characters/8265_goutbeat.anm2"),
+  );
+  SFXManager().Preload(Isaac.GetSoundIdByName("Run Victory"));
+  Game().GetHUD();
 }
