@@ -7,7 +7,7 @@ import { PillSwitchState } from "./switches/PillSwitchState";
 import { SwitchVariant } from "./switchVariant";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
-import { Rules, Steps } from "./types/selection";
+import { Rules } from "./types/selection";
 
 const buttons = new Map<Rules, SwitchVariant>([
   [Rules.BOMB, BombSwitchState.default()],
@@ -50,8 +50,6 @@ export function togglePlate(plate: GridEntityPressurePlate | undefined): void {
         (bossSwitch) =>
           bossSwitch.plate.GetGridIndex() === bossPlate.GetGridIndex(),
       )?.objective;
-      globals.$step = Steps.RULE_SELECTION;
-      Isaac.ExecuteCommand("goto s.default.13");
     });
     plateOffCallback(plate, (_player, pp) => {
       pp.State = PressurePlateState.UNPRESSED;

@@ -8,14 +8,19 @@ export function initPostNewRoom(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
 }
 
-const RULE_PLATE_INDEX = [37, 67, 84, 71, 80, 63];
+const RULE_PLATE_INDEX = [37, 54, 84, 71, 80, 63];
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
 function initSelectRoom() {
+  Isaac.ConsoleOutput(`${globals.$step}`);
   const roomId = Game().GetLevel().GetCurrentRoomIndex();
   if (globals.$step !== Steps.SELECTION_COMPLETE) {
     if (roomId === -3) {
       const room = Game().GetRoom();
+      if (globals.$step === Steps.STATER_SELECTION) {
+        clearRoom(room);
+        setupStarterRoom();
+      }
       if (globals.$step === Steps.RULE_SELECTION) {
         globals.$showRules = true;
         clearRoom(room);
@@ -25,10 +30,21 @@ function initSelectRoom() {
         clearRoom(room);
         setupBossRoom(room);
       }
-    }
-    if (globals.$step === Steps.RULE_SELECTION && roomId === 84) {
-      globals.$step = Steps.SELECTION_COMPLETE;
-      globals.$showRules = false;
+    } else {
+      if (globals.$step === Steps.STATER_SELECTION) {
+        globals.$step = Steps.SELECTION_COMPLETE;
+        globals.$showRules = false;
+        return;
+      }
+      if (globals.$step === Steps.RULE_SELECTION) {
+        globals.$step = Steps.STATER_SELECTION;
+        Isaac.ExecuteCommand("goto s.default.13");
+        return;
+      }
+      if (globals.$step === Steps.OBJECTIVE_SELECTION) {
+        globals.$step = Steps.RULE_SELECTION;
+        Isaac.ExecuteCommand("goto s.default.13");
+      }
     }
   }
 }
@@ -39,6 +55,7 @@ function postTheBeastRoom() {
 }
 
 function setupBossRoom(room: Room) {
+  Game().GetHUD().ShowFortuneText("Choose a destination");
   BOSS_PLATES_INDEX.forEach((gridIndex, index) => {
     const plate = Isaac.GridSpawn(
       GridEntityType.GRID_PRESSURE_PLATE,
@@ -53,6 +70,7 @@ function setupBossRoom(room: Room) {
   });
 }
 function setupRulesRoom(room: Room) {
+  Game().GetHUD().ShowFortuneText("Select rules for the run");
   RULE_PLATE_INDEX.forEach((gridIndex, index) => {
     const plate = Isaac.GridSpawn(
       GridEntityType.GRID_PRESSURE_PLATE,
@@ -65,6 +83,13 @@ function setupRulesRoom(room: Room) {
       globals.$rulesPlates.push({ plate, rules });
     }
   });
+}
+
+function setupStarterRoom() {
+  Game()
+    .GetHUD()
+    .ShowFortuneText("Get starter items", "And start you adventure");
+
   Isaac.Spawn(
     EntityType.ENTITY_PICKUP,
     PickupVariant.PICKUP_COLLECTIBLE,
@@ -74,6 +99,7 @@ function setupRulesRoom(room: Room) {
     undefined,
   );
 }
+
 function clearRoom(room: Room) {
   for (let i = 0; i < 110; i++) {
     const pp = room.GetGridEntity(i)?.ToPressurePlate();

@@ -28,19 +28,18 @@ function displayChallengeText() {
       });
     }
   }
-  // const entities = Isaac.GetRoomEntities();
-  // for (const entity of entities) {
-  //   const playerRenderPos = Isaac.WorldToRenderPosition(entity.Position);
-  //   Isaac.RenderText(
-  //     `${entity.Position.X}.${entity.Position.Y}`,
-  //     playerRenderPos.X,
-  //     playerRenderPos.Y,
-  //     1,
-  //     1,
-  //     1,
-  //     255,
-  //   );
-  // }
+  const playerRenderPos = Isaac.WorldToRenderPosition(
+    Isaac.GetPlayer().Position,
+  );
+  Isaac.RenderText(
+    `${Game().GetRoom().GetClampedGridIndex(Isaac.GetPlayer().Position)}`,
+    playerRenderPos.X,
+    playerRenderPos.Y,
+    1,
+    1,
+    1,
+    255,
+  );
 }
 
 function renderText(text: string, x: int, y: int) {
