@@ -1,7 +1,8 @@
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
-import { IsInHistory } from "../utils/utils";
+import { Steps } from "../types/selection";
+import { IsNotHistory } from "../utils/utils";
 
 export function entitySpawnInit(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, OnPickUpdate);
@@ -18,7 +19,8 @@ function OnPickUpdate(entity: EntityPickup) {
   }
   if (
     entity.Variant === PickupVariant.PICKUP_COLLECTIBLE &&
-    IsInHistory(entity.SubType) &&
+    IsNotHistory(entity.SubType) &&
+    globals.$step === Steps.SELECTION_COMPLETE &&
     globals.$rules.includes(ruleDescriptors[11])
   ) {
     pickupCollectible(entity);

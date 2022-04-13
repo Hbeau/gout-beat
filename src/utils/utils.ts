@@ -8,6 +8,6 @@ const historyItems = [
   GoutBeatEntities.WOODEN_PIPE,
 ];
 
-export function IsInHistory(collectible: CollectibleType): boolean {
-  return historyItems.includes(collectible);
+export function IsNotHistory(collectible: CollectibleType): boolean {
+  return !historyItems.includes(collectible);
 }
