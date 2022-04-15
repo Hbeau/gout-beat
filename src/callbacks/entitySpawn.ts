@@ -1,3 +1,4 @@
+import { sfxManager } from "isaacscript-common";
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
@@ -66,6 +67,7 @@ function swallowPill(entity: EntityPickup) {
     player.UsePill(effect, entity.SubType);
     player.AnimatePill(entity.SubType);
     player.EvaluateItems();
+    sfxManager.Play(GoutBeatEntities.PILL);
   }
   return [EntityType.ENTITY_EFFECT, EffectVariant.POOF01, 0, 0];
 }

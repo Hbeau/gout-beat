@@ -2,4 +2,22 @@
 	<sound name="Run Victory">
 		<sample weight="1" path="gare-au-gout-beat.wav" />
 	</sound>
+	<sound name="Hein">
+		<sample weight="1" path="Hein1.wav"/>
+		<sample weight="1" path="Hein2.wav"/>
+		<sample weight="1" path="Hein3.wav"/>
+	</sound>
+	<sound name="Combien">
+		<sample path="Combien.wav"/>
+	</sound>
+	<sound name="Quoi">
+		<sample path="Quoi1.wav"/>
+		<sample path="Quoi2.wav"/>
+	</sound>
+	<sound name="SpassTroMal">
+		<sample path="Spasstromal.wav"/>
+	</sound>
+	<sound name="Pillule">
+		<sample path="Y_avait_une_pilule_la.wav"/>
+	</sound>
 </sounds>
