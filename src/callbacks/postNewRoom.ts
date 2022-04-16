@@ -1,3 +1,4 @@
+import { inDoubleTrouble, sfxManager } from "isaacscript-common";
 import globals from "../globals";
 import { reloadTheBeast } from "../preventEnds";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
@@ -6,13 +7,19 @@ import { Objectives, Rules, Steps } from "../types/selection";
 export function initPostNewRoom(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
+  mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, playSoundOnEnter);
 }
 
 const RULE_PLATE_INDEX = [37, 54, 84, 71, 80, 63];
 const BOSS_PLATES_INDEX = [37, 67, 54, 84, 71, 50, 80, 63];
 
+function playSoundOnEnter() {
+  if (inDoubleTrouble()) {
+    sfxManager.Play(GoutBeatEntities.COMBIEN_DE_MONSTRO);
+  }
+}
+
 function initSelectRoom() {
-  Isaac.ConsoleOutput(`${globals.$step}`);
   const roomId = Game().GetLevel().GetCurrentRoomIndex();
   if (globals.$step !== Steps.SELECTION_COMPLETE) {
     if (roomId === -3) {
@@ -30,7 +37,7 @@ function initSelectRoom() {
         clearRoom(room);
         setupBossRoom(room);
       }
-    } else {
+    } else if (roomId === 84) {
       if (globals.$step === Steps.STATER_SELECTION) {
         globals.$step = Steps.SELECTION_COMPLETE;
         globals.$showRules = false;

@@ -1,4 +1,4 @@
-import { sfxManager } from "isaacscript-common";
+import { getRoomName, inDeathCertificateArea, sfxManager } from "isaacscript-common";
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
@@ -22,6 +22,8 @@ function OnPickUpdate(entity: EntityPickup) {
     entity.Variant === PickupVariant.PICKUP_COLLECTIBLE &&
     IsNotHistory(entity.SubType) &&
     globals.$step === Steps.SELECTION_COMPLETE &&
+    !getRoomName().includes("Boss Rush") &&
+    !inDeathCertificateArea() &&
     globals.$rules.includes(ruleDescriptors[11])
   ) {
     pickupCollectible(entity);

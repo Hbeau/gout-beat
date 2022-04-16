@@ -6,6 +6,7 @@ const historyItems = [
   CollectibleType.COLLECTIBLE_BROKEN_SHOVEL_1,
   CollectibleType.COLLECTIBLE_BROKEN_SHOVEL_2,
   GoutBeatEntities.WOODEN_PIPE,
+  CollectibleType.COLLECTIBLE_NULL,
 ];
 
 export function IsNotHistory(collectible: CollectibleType): boolean {

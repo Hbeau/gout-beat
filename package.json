@@ -12,13 +12,13 @@
   "license": "GPL-3.0",
   "dependencies": {
     "g": "^2.0.1",
-    "isaac-typescript-definitions": "^1.0.370",
-    "isaacscript": "^1.2.25",
-    "isaacscript-common": "^1.2.168",
-    "isaacscript-lint": "^1.0.91"
+    "isaac-typescript-definitions": "^1.0.392",
+    "isaacscript": "^1.2.37",
+    "isaacscript-common": "^1.2.274",
+    "isaacscript-lint": "^1.0.99"
   },
   "devDependencies": {
-    "prettier": "^2.6.0",
-    "typescript-to-lua": "^1.4.2"
+    "prettier": "^2.6.2",
+    "typescript-to-lua": "^1.4.3"
   }
 }

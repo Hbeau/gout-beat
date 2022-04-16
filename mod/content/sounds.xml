@@ -10,6 +10,9 @@
 	<sound name="Combien">
 		<sample path="Combien.wav"/>
 	</sound>
+	<sound name="CombienMonstro">
+		<sample path="Combien_de_Monstro.wav"/>
+	</sound>
 	<sound name="Quoi">
 		<sample path="Quoi1.wav"/>
 		<sample path="Quoi2.wav"/>

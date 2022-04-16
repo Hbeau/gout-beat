@@ -56,6 +56,14 @@ export function postEntityKillMother(entity: Entity): void {
     }
   }
 }
+export function postEntityKillDelirium(entity: Entity): void {
+  if (entity.Type === EntityType.ENTITY_DELIRIUM) {
+    if (globals.$objective === Objectives.DELIRIUM) {
+      globals.$victory = true;
+      emulateRoomClear();
+    }
+  }
+}
 
 function allLambEntitiesDead() {
   const lambs = getNPCs(EntityType.ENTITY_THE_LAMB);

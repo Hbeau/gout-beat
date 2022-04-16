@@ -1,3 +1,5 @@
+import { getRoomName, spawn } from "isaacscript-common";
+import globals from "../globals";
 import {
   postEntityKillHush,
   postEntityKillIsaac,
@@ -6,6 +8,8 @@ import {
   postEntityKillTheBeast,
   postEntityTheLamb,
 } from "../preventEnds";
+import { GoutBeatEntities } from "../types/goutBeatEntities";
+import { Objectives } from "../types/selection";
 
 export function init(mod: Mod): void {
   mod.AddCallback(
@@ -43,6 +47,13 @@ export function init(mod: Mod): void {
     mother,
     EntityType.ENTITY_MOTHER,
   );
+  mod.AddCallback(
+    ModCallbacks.MC_POST_ENTITY_KILL,
+    delirium,
+    EntityType.ENTITY_DELIRIUM,
+  );
+
+  mod.AddCallback(ModCallbacks.MC_PRE_SPAWN_CLEAN_AWARD, postRoomFinished);
 }
 
 function theLamb(entity: Entity) {
@@ -58,6 +69,9 @@ function hush(entity: Entity) {
 function mother(entity: Entity) {
   postEntityKillMother(entity);
 }
+function delirium(entity: Entity) {
+  postEntityKillDelirium(entity);
+}
 
 function theBeast(entity: Entity) {
   postEntityKillTheBeast(entity);
@@ -65,4 +79,19 @@ function theBeast(entity: Entity) {
 
 function megaSatan(entity: Entity) {
   postEntityKillMegaSatan2(entity);
+}
+function postRoomFinished(rng: RNG, spawnPosition: Vector) {
+  if (
+    getRoomName().includes("Boss Rush") &&
+    globals.$objective === Objectives.BOSS_RUSH
+  ) {
+    spawn(
+      EntityType.ENTITY_PICKUP,
+      PickupVariant.PICKUP_COLLECTIBLE,
+      GoutBeatEntities.WOODEN_PIPE,
+      spawnPosition,
+    );
+    return true;
+  }
+  return false;
 }
