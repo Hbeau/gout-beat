@@ -1,6 +1,7 @@
 import { getRoomName, spawn } from "isaacscript-common";
 import globals from "../globals";
 import {
+  postEntityKillDelirium,
   postEntityKillHush,
   postEntityKillIsaac,
   postEntityKillMegaSatan2,
@@ -80,7 +81,7 @@ function theBeast(entity: Entity) {
 function megaSatan(entity: Entity) {
   postEntityKillMegaSatan2(entity);
 }
-function postRoomFinished(rng: RNG, spawnPosition: Vector) {
+function postRoomFinished(_rng: RNG, spawnPosition: Vector) {
   if (
     getRoomName().includes("Boss Rush") &&
     globals.$objective === Objectives.BOSS_RUSH

@@ -1,4 +1,8 @@
-import { getRoomName, inDeathCertificateArea, sfxManager } from "isaacscript-common";
+import {
+  getRoomName,
+  inDeathCertificateArea,
+  sfxManager,
+} from "isaacscript-common";
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";

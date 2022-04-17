@@ -9,7 +9,7 @@
   "editor.tabSize": 2,
 
   "files.associations": {
-    "*.anm2": "xml", // anm2 files are just XML files
+    "*.anm2": "xml" // anm2 files are just XML files
   },
 
   // Linux line endings are used in this project
@@ -22,7 +22,7 @@
   "search.exclude": {
     "**/mod/main.lua": true,
     "**/*.png": true,
-    "**/*.wav": true,
+    "**/*.wav": true
   },
 
   // -----------------
@@ -37,17 +37,13 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint",
-    ],
-    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+    "editor.tabSize": 2
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": [
-      "source.fixAll.eslint",
-    ],
-    "editor.tabSize": 2,
-  },
+    "editor.codeActionsOnSave": ["source.fixAll.eslint"],
+    "editor.tabSize": 2
+  }
 }

@@ -1,3 +1,4 @@
+import { sfxManager } from "isaacscript-common";
 import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
@@ -6,7 +7,7 @@ import { Steps } from "../types/selection";
 export function postGameStarted(): void {
   globals.$bossPlates = [];
   globals.$rulesPlates = [];
-  globals.$showRules= true;
+  globals.$showRules = true;
   globals.$objective = undefined;
   globals.$rules = [
     ruleDescriptors[2],
@@ -21,7 +22,7 @@ export function postGameStarted(): void {
   Isaac.GetPlayer().AddNullCostume(
     Isaac.GetCostumeIdByPath("gfx/characters/8265_goutbeat.anm2"),
   );
-  SFXManager().Preload(Isaac.GetSoundIdByName("Run Victory"));
+  sfxManager.Preload(Isaac.GetSoundIdByName("Run Victory"));
   const l = Game().GetLevel();
   if (l.GetAbsoluteStage() === 1) {
     const curse = 1 << (GoutBeatEntities.CURSE_OF_TUESDAY - 1);

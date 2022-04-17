@@ -18,7 +18,8 @@ export class GoutBeatEntities {
   // Sounds
   public static readonly RUN_VICTORY = Isaac.GetSoundIdByName("Run Victory");
   public static readonly PILL = Isaac.GetSoundIdByName("Pillule");
-  public static readonly COMBIEN_DE_MONSTRO =  Isaac.GetSoundIdByName("CombienMonstro");
+  public static readonly COMBIEN_DE_MONSTRO =
+    Isaac.GetSoundIdByName("CombienMonstro");
 
   // Curse
   public static readonly CURSE_OF_TUESDAY =

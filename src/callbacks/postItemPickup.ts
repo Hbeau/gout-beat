@@ -1,4 +1,8 @@
-import { ModCallbacksCustom, ModUpgraded } from "isaacscript-common";
+import {
+  ModCallbacksCustom,
+  ModUpgraded,
+  sfxManager,
+} from "isaacscript-common";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 
 export function initPostItemPickup(mod: ModUpgraded): void {
@@ -10,6 +14,6 @@ export function initPostItemPickup(mod: ModUpgraded): void {
   );
 }
 function onItemPickup() {
-  SFXManager().Play(GoutBeatEntities.RUN_VICTORY);
+  sfxManager.Play(GoutBeatEntities.RUN_VICTORY);
   Game().Fadeout(2, FadeoutTarget.RESTART_RUN_LAP);
 }

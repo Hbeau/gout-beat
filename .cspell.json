@@ -1,15 +1,20 @@
 {
-    "version": "0.2",
-    "words": [
-        "BIGCHEST",
-        "dbaeumer",
-        "hudpickups",
-        "isaacscript",
-        "itemdungeon",
-        "PILLEFFECT",
-        "sarisia",
-        "steamapps",
-        "technote",
-        "tstl"
-    ]
+  "version": "0.2",
+  "words": [
+    "BIGCHEST",
+    "COMBIEN",
+    "dbaeumer",
+    "goutbeat",
+    "hudpickups",
+    "isaacscript",
+    "itemdungeon",
+    "PILLEFFECT",
+    "sarisia",
+    "steamapps",
+    "technote",
+    "tstl",
+    "MONSTRO",
+    "Pillule",
+    "Monstro"
+  ]
 }

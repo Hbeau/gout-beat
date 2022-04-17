@@ -1,3 +1,9 @@
 <items gfxroot="gfx/items/" version="1">
-<passive cache="" name="GG +1" description="Plus one for Shishi" gfx="wooden_pipe.png" hidden="true"  />
+<passive
+    cache=""
+    name="GG +1"
+    description="Plus one for Shishi"
+    gfx="wooden_pipe.png"
+    hidden="true"
+  />
 </items>
