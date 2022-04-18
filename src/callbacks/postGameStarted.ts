@@ -7,7 +7,6 @@ import { Steps } from "../types/selection";
 export function postGameStarted(): void {
   globals.$bossPlates = [];
   globals.$rulesPlates = [];
-  globals.$showRules = true;
   globals.$objective = undefined;
   globals.$rules = [
     ruleDescriptors[2],

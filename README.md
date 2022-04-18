@@ -4,7 +4,6 @@ gout-beat is a mod for _[The Binding of Isaac: Repentance](https://store.steampo
 
 ## TO Do
 
-- fix item auto pick for history items
 - fix pipe sprite
 - add more options
 - fix start step item disappear

@@ -7,21 +7,21 @@ export class CoinSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[0] = ruleDescriptors[6];
+        globals.$rules[1] = ruleDescriptors[6];
       },
       () => CoinSwitchState.next(),
     ),
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateHappy();
-        globals.$rules[0] = ruleDescriptors[7];
+        globals.$rules[1] = ruleDescriptors[7];
         player.AddCoins(999);
       },
       () => CoinSwitchState.next(),
     ),
     new SwitchVariant(
       (player: EntityPlayer) => {
-        globals.$rules[0] = ruleDescriptors[8];
+        globals.$rules[1] = ruleDescriptors[8];
         player.AddCoins(-999);
       },
       () => CoinSwitchState.next(),

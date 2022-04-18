@@ -20,7 +20,7 @@ function displayChallengeText() {
   if (globals.$step === Steps.RULE_SELECTION) {
     globals.$rulesPlates.forEach((plate) => renderRuleSprite(plate));
   }
-  if (globals.$showRules || globals.$step === Steps.RULE_SELECTION) {
+  if (globals.$showRules || globals.$step !== Steps.SELECTION_COMPLETE) {
     if (globals.$objective !== undefined) {
       renderText(globals.$objective, defaultX, defaultY - 10);
       globals.$rules.forEach((rule, index) => {
@@ -28,18 +28,6 @@ function displayChallengeText() {
       });
     }
   }
-  const playerRenderPos = Isaac.WorldToRenderPosition(
-    Isaac.GetPlayer().Position,
-  );
-  Isaac.RenderText(
-    `${Game().GetRoom().GetClampedGridIndex(Isaac.GetPlayer().Position)}`,
-    playerRenderPos.X,
-    playerRenderPos.Y,
-    1,
-    1,
-    1,
-    255,
-  );
 }
 
 function renderText(text: string, x: int, y: int) {

@@ -34,6 +34,7 @@ function initSelectRoom() {
         setupRulesRoom(room);
       }
       if (globals.$step === Steps.OBJECTIVE_SELECTION) {
+        globals.$showRules = true;
         clearRoom(room);
         setupBossRoom(room);
       }

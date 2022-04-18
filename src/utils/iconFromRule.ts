@@ -13,7 +13,7 @@ export function IconFromRule(rule: Rules): number {
     case Rules.ITEM:
       return 18;
     case Rules.TEAR:
-      return 1;
+      return 22;
     default:
       return 3;
   }
