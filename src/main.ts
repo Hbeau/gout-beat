@@ -5,6 +5,7 @@ import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
 import { initInputAction } from "./callbacks/inputAction";
 import { levelStartInit } from "./callbacks/levelStart";
 import { pickupInit } from "./callbacks/pickup";
+import { initStartItemCache } from "./callbacks/postEntityRemove";
 import { postGameStarted } from "./callbacks/postGameStarted";
 import { initPostItemPickup } from "./callbacks/postItemPickup";
 import { initPostNewRoom } from "./callbacks/postNewRoom";
@@ -30,6 +31,7 @@ export function main(): void {
   initPostNewRoom(mod);
   initPostItemPickup(modUpgraded);
   initInputAction(mod);
+  initStartItemCache(mod);
 }
 
 function boostIsaacForTest() {

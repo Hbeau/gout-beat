@@ -31,6 +31,7 @@ export class BombSwitchState {
   private static index = 0;
 
   public static default(): SwitchVariant {
+    BombSwitchState.index = 0;
     return this.variants[0];
   }
 

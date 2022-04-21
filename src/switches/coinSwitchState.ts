@@ -31,6 +31,7 @@ export class CoinSwitchState {
   private static index = 0;
 
   public static default(): SwitchVariant {
+    CoinSwitchState.index = 0;
     return this.variants[0];
   }
 

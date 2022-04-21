@@ -4,6 +4,7 @@ import { CoinSwitchState } from "./switches/coinSwitchState";
 import { ItemSwitchState } from "./switches/ItemSwitchState";
 import { KeySwitchState } from "./switches/keySwitchState";
 import { PillSwitchState } from "./switches/PillSwitchState";
+import { TearSwitchState } from "./switches/TearSwitchState";
 import { SwitchVariant } from "./switchVariant";
 import { TogglePlateCallback } from "./togglePlateCallback";
 import { GoutBeatEntities } from "./types/goutBeatEntities";
@@ -15,6 +16,7 @@ const buttons = new Map<Rules, SwitchVariant>([
   [Rules.COIN, CoinSwitchState.default()],
   [Rules.PILL, PillSwitchState.default()],
   [Rules.ITEM, ItemSwitchState.default()],
+  [Rules.TEAR, TearSwitchState.default()],
 ]);
 
 export function togglePlate(plate: GridEntityPressurePlate | undefined): void {

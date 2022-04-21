@@ -6,7 +6,7 @@ export class TearSwitchState {
   public static variants: SwitchVariant[] = [
     new SwitchVariant(
       () => {
-        globals.$rules[5] = ruleDescriptors[13];
+        globals.$rules[5] = ruleDescriptors[15];
       },
       () => TearSwitchState.next(),
     ),
@@ -20,7 +20,7 @@ export class TearSwitchState {
     new SwitchVariant(
       (player: EntityPlayer) => {
         player.AnimateSad();
-        globals.$rules[5] = ruleDescriptors[15];
+        globals.$rules[5] = ruleDescriptors[13];
       },
       () => TearSwitchState.next(),
     ),
@@ -29,6 +29,7 @@ export class TearSwitchState {
   private static index = 0;
 
   public static default(): SwitchVariant {
+    TearSwitchState.index = 0;
     return this.variants[0];
   }
 

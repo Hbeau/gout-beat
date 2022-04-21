@@ -23,6 +23,7 @@ export class ItemSwitchState {
   private static index = 0;
 
   public static default(): SwitchVariant {
+    ItemSwitchState.index = 0;
     return this.variants[0];
   }
 

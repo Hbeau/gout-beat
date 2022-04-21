@@ -1,5 +1,6 @@
 import globals from "../globals";
 import { ObjectiveSwitch } from "../types/objectiveSwitch";
+import { RulesModifiers } from "../types/rulesModifiers";
 import { RuleSwitch } from "../types/ruleSwitch";
 import { Steps } from "../types/selection";
 import { DestinationFromObjective } from "../utils/destinationFromObjective";
@@ -23,9 +24,11 @@ function displayChallengeText() {
   if (globals.$showRules || globals.$step !== Steps.SELECTION_COMPLETE) {
     if (globals.$objective !== undefined) {
       renderText(globals.$objective, defaultX, defaultY - 10);
-      globals.$rules.forEach((rule, index) => {
-        renderText(rule.gameText, defaultX, defaultY + 10 * index);
-      });
+      globals.$rules
+        .filter((rule) => rule.modifier !== RulesModifiers.NORMAL)
+        .forEach((rule, index) => {
+          renderText(rule.gameText, defaultX, defaultY + 10 * index);
+        });
     }
   }
 }

@@ -10,11 +10,11 @@ export function postGameStarted(): void {
   globals.$objective = undefined;
   globals.$rules = [
     ruleDescriptors[2],
-    ruleDescriptors[5],
     ruleDescriptors[8],
+    ruleDescriptors[5],
     ruleDescriptors[10],
     ruleDescriptors[12],
-    ruleDescriptors[14],
+    ruleDescriptors[15],
   ];
   Isaac.ExecuteCommand("goto s.default.13");
   globals.$step = Steps.OBJECTIVE_SELECTION;
