@@ -16,14 +16,18 @@ function onTabPress() {
     globals.$showRules = false;
   }
 }
+// eslint-disable-next-line consistent-return
 function onFirePress(
   _entity: Entity | undefined,
   hook: InputHook,
   action: ButtonAction,
-) {
-  if (action === ButtonAction.ACTION_SHOOTLEFT)
-    Input.GetActionValue(
-      ButtonAction.ACTION_SHOOTRIGHT,
-      Isaac.GetPlayer().ControllerIndex,
-    );
+): number|void {
+  if (hook === InputHook.GET_ACTION_VALUE) {
+    if (action === ButtonAction.ACTION_SHOOTLEFT) {
+      return Input.GetActionValue(
+        ButtonAction.ACTION_SHOOTRIGHT,
+        Isaac.GetPlayer().ControllerIndex,
+      );
+    }
+  }
 }
