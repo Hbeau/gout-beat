@@ -14,7 +14,7 @@
     "g": "^2.0.1",
     "isaac-typescript-definitions": "^1.0.392",
     "isaacscript": "^1.2.37",
-    "isaacscript-common": "^1.2.274",
+    "isaacscript-common": "^1.2.277",
     "isaacscript-lint": "^1.0.99"
   },
   "devDependencies": {
