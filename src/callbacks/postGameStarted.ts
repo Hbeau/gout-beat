@@ -16,7 +16,7 @@ export function postGameStarted(): void {
     ruleDescriptors[12],
     ruleDescriptors[15],
   ];
-  Isaac.ExecuteCommand("goto s.default.13");
+  Isaac.ExecuteCommand("goto s.default.11:101");
   globals.$step = Steps.OBJECTIVE_SELECTION;
   Isaac.GetPlayer().AddNullCostume(
     Isaac.GetCostumeIdByPath("gfx/characters/8265_goutbeat.anm2"),

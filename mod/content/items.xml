@@ -6,4 +6,11 @@
     gfx="wooden_pipe.png"
     hidden="true"
   />
+  <active
+    cache=""
+    name="Shish Engine"
+    description="Only way to 100-0 a lost streak"
+    gfx="shish_engine.png"
+    hidden="true"
+  />
 </items>

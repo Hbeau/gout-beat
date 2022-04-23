@@ -4,6 +4,7 @@ import { entitySpawnInit } from "./callbacks/entitySpawn";
 import { init as gridEntityInit } from "./callbacks/gridEntityUpdate";
 import { initInputAction } from "./callbacks/inputAction";
 import { levelStartInit } from "./callbacks/levelStart";
+import { initUseItem } from "./callbacks/onItemUse";
 import { pickupInit } from "./callbacks/pickup";
 import { initStartItemCache } from "./callbacks/postEntityRemove";
 import { postGameStarted } from "./callbacks/postGameStarted";
@@ -32,6 +33,7 @@ export function main(): void {
   initPostItemPickup(modUpgraded);
   initInputAction(mod);
   initStartItemCache(mod);
+  initUseItem(mod);
 }
 
 function boostIsaacForTest() {

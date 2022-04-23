@@ -14,6 +14,7 @@ export class GoutBeatEntities {
 
   // Items
   public static readonly WOODEN_PIPE = Isaac.GetItemIdByName("GG +1");
+  public static readonly SHISH_ENGINE = Isaac.GetItemIdByName("Shish Engine");
 
   // Sounds
   public static readonly RUN_VICTORY = Isaac.GetSoundIdByName("Run Victory");

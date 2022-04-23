@@ -1,4 +1,4 @@
-import { inDoubleTrouble, sfxManager } from "isaacscript-common";
+import { getRoomName, inDoubleTrouble, sfxManager } from "isaacscript-common";
 import globals from "../globals";
 import { reloadTheBeast } from "../preventEnds";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
@@ -22,7 +22,7 @@ function playSoundOnEnter() {
 function initSelectRoom() {
   const roomId = Game().GetLevel().GetCurrentRoomIndex();
   if (globals.$step !== Steps.SELECTION_COMPLETE) {
-    if (roomId === -3) {
+    if (getRoomName().includes("select")) {
       const room = Game().GetRoom();
       if (globals.$step === Steps.STATER_SELECTION) {
         clearRoom(room);
@@ -46,12 +46,12 @@ function initSelectRoom() {
       }
       if (globals.$step === Steps.RULE_SELECTION) {
         globals.$step = Steps.STATER_SELECTION;
-        Isaac.ExecuteCommand("goto s.default.13");
+        Isaac.ExecuteCommand("goto s.default.11:101");
         return;
       }
       if (globals.$step === Steps.OBJECTIVE_SELECTION) {
         globals.$step = Steps.RULE_SELECTION;
-        Isaac.ExecuteCommand("goto s.default.13");
+        Isaac.ExecuteCommand("goto s.default.11:101");
       }
     }
   }
@@ -101,8 +101,8 @@ function setupStarterRoom() {
   Isaac.Spawn(
     EntityType.ENTITY_PICKUP,
     PickupVariant.PICKUP_COLLECTIBLE,
-    CollectibleType.COLLECTIBLE_DEATH_CERTIFICATE,
-    Vector(320, 300),
+    GoutBeatEntities.SHISH_ENGINE,
+    Vector(320, 320),
     Vector(0, 0),
     undefined,
   );

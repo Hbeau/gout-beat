@@ -1,4 +1,4 @@
-import { game } from "isaacscript-common";
+import { getRoomName, inStartingRoom } from "isaacscript-common";
 
 class Cache {
   public static itemCache: CollectibleType = CollectibleType.COLLECTIBLE_NULL;
@@ -13,25 +13,24 @@ export function initStartItemCache(mod: Mod): void {
 }
 function onPostEntityRemove(entity: Entity) {
   if (
-    game.GetLevel().GetCurrentRoomIndex() === 80 &&
+    getRoomName().includes("shishengine") &&
     entity.Type === EntityType.ENTITY_PICKUP &&
     entity.Variant === PickupVariant.PICKUP_COLLECTIBLE
   ) {
     Cache.itemCache = entity.SubType;
-    Isaac.DebugString(`just removed : ${Cache.itemCache}`);
   }
+  Isaac.DebugString(`just removed : ${getRoomName()}`);
 }
 function onNewRoom() {
-  Isaac.DebugString(`just respawned : ${Cache.itemCache}`);
   if (
-    game.GetLevel().GetCurrentRoomIndex() === -3 &&
+    inStartingRoom() &&
     Cache.itemCache !== CollectibleType.COLLECTIBLE_NULL
   ) {
     Isaac.Spawn(
       EntityType.ENTITY_PICKUP,
       PickupVariant.PICKUP_COLLECTIBLE,
       Cache.itemCache,
-      Vector(100, 300),
+      Vector(320, 200),
       Vector.Zero,
       undefined,
     );
