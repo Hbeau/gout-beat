@@ -8,7 +8,8 @@ export function initUseItem(mod: Mod): void {
   );
 }
 function onUseShishEngine() {
-  Isaac.GetPlayer().AnimateTeleport(true);
+  const player = Isaac.GetPlayer();
+  player.AnimateTeleport(true);
   Isaac.ExecuteCommand("goto s.default.110");
   Isaac.GetPlayer().RemoveCollectible(GoutBeatEntities.SHISH_ENGINE);
 }

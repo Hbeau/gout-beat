@@ -1,13 +1,21 @@
-import { getRoomName, inDoubleTrouble, sfxManager } from "isaacscript-common";
+import {
+  game,
+  getRoomName,
+  inDoubleTrouble,
+  inStartingRoom,
+  sfxManager,
+} from "isaacscript-common";
 import globals from "../globals";
 import { reloadTheBeast } from "../preventEnds";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { Objectives, Rules, Steps } from "../types/selection";
+import { STARTER_ITEMS, STARTER_TRINKETS } from "../types/StarterItems";
 
 export function initPostNewRoom(mod: Mod): void {
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, initSelectRoom);
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, postTheBeastRoom);
   mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, playSoundOnEnter);
+  mod.AddCallback(ModCallbacks.MC_POST_NEW_ROOM, setupShishEngineRoom);
 }
 
 const RULE_PLATE_INDEX = [37, 54, 84, 71, 80, 63];
@@ -38,7 +46,7 @@ function initSelectRoom() {
         clearRoom(room);
         setupBossRoom(room);
       }
-    } else if (roomId === 84) {
+    } else if (inStartingRoom()) {
       if (globals.$step === Steps.STATER_SELECTION) {
         globals.$step = Steps.SELECTION_COMPLETE;
         globals.$showRules = false;
@@ -54,6 +62,10 @@ function initSelectRoom() {
         Isaac.ExecuteCommand("goto s.default.11:101");
       }
     }
+  }
+  if (getRoomName().includes("shishengine")) {
+    game.ShowHallucination(0, 31);
+    Isaac.GetPlayer().Position = Vector(540, 230);
   }
 }
 function postTheBeastRoom() {
@@ -106,6 +118,30 @@ function setupStarterRoom() {
     Vector(0, 0),
     undefined,
   );
+}
+function setupShishEngineRoom() {
+  if (getRoomName().includes("shishengine")) {
+    STARTER_ITEMS.forEach((pos, item) => {
+      Isaac.Spawn(
+        EntityType.ENTITY_PICKUP,
+        PickupVariant.PICKUP_COLLECTIBLE,
+        item,
+        pos,
+        Vector.Zero,
+        undefined,
+      );
+    });
+    STARTER_TRINKETS.forEach((pos, trinket) => {
+      Isaac.Spawn(
+        EntityType.ENTITY_PICKUP,
+        PickupVariant.PICKUP_TRINKET,
+        trinket,
+        pos,
+        Vector.Zero,
+        undefined,
+      );
+    });
+  }
 }
 
 function clearRoom(room: Room) {

@@ -19,7 +19,6 @@ function onPostEntityRemove(entity: Entity) {
   ) {
     Cache.itemCache = entity.SubType;
   }
-  Isaac.DebugString(`just removed : ${getRoomName()}`);
 }
 function onNewRoom() {
   if (

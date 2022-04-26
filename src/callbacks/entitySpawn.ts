@@ -7,14 +7,15 @@ import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 import { Steps } from "../types/selection";
+import { STARTER_ITEMS } from "../types/StarterItems";
 import { IsNotHistory } from "../utils/utils";
 
 export function entitySpawnInit(mod: Mod): void {
-  mod.AddCallback(ModCallbacks.MC_POST_PICKUP_UPDATE, OnPickUpdate);
+  mod.AddCallback(ModCallbacks.MC_POST_PICKUP_INIT, OnPickUpInit);
   mod.AddCallback(ModCallbacks.MC_PRE_ENTITY_SPAWN, replaceBigChest);
 }
 
-function OnPickUpdate(entity: EntityPickup) {
+function OnPickUpInit(entity: EntityPickup) {
   if (
     entity.Variant === PickupVariant.PICKUP_PILL &&
     globals.$rules.includes(ruleDescriptors[9])
