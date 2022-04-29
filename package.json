@@ -1,6 +1,6 @@
 {
   "name": "gout-beat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A mod for The Binding of Isaac: Repentance",
   "keywords": [
     "isaac",
@@ -12,10 +12,10 @@
   "license": "GPL-3.0",
   "dependencies": {
     "g": "^2.0.1",
-    "isaac-typescript-definitions": "^1.0.392",
-    "isaacscript": "^1.2.37",
-    "isaacscript-common": "^1.2.277",
-    "isaacscript-lint": "^1.0.99"
+    "isaac-typescript-definitions": "^1.0.395",
+    "isaacscript": "^1.2.40",
+    "isaacscript-common": "^1.2.291",
+    "isaacscript-lint": "^1.0.100"
   },
   "devDependencies": {
     "prettier": "^2.6.2",
