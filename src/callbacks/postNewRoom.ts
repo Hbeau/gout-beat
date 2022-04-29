@@ -28,7 +28,6 @@ function playSoundOnEnter() {
 }
 
 function initSelectRoom() {
-  const roomId = Game().GetLevel().GetCurrentRoomIndex();
   if (globals.$step !== Steps.SELECTION_COMPLETE) {
     if (getRoomName().includes("select")) {
       const room = Game().GetRoom();
@@ -64,7 +63,7 @@ function initSelectRoom() {
     }
   }
   if (getRoomName().includes("shishengine")) {
-    game.ShowHallucination(0, 6357);
+    game.ShowHallucination(0, 100);
     Isaac.GetPlayer().Position = Vector(540, 230);
   }
 }

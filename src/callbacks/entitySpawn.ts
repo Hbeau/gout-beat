@@ -7,7 +7,6 @@ import globals from "../globals";
 import { GoutBeatEntities } from "../types/goutBeatEntities";
 import { ruleDescriptors } from "../types/rules/ruleDescriptions";
 import { Steps } from "../types/selection";
-import { STARTER_ITEMS } from "../types/StarterItems";
 import { IsNotHistory } from "../utils/utils";
 
 export function entitySpawnInit(mod: Mod): void {

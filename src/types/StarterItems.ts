@@ -30,13 +30,19 @@ export const STARTER_ITEMS = new Map<CollectibleType, Vector>([
   [CollectibleType.COLLECTIBLE_9_VOLT, Vector(360.0, 680.0)],
   [CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE, Vector(440.0, 680.0)],
   [CollectibleType.COLLECTIBLE_PLAN_C, Vector(520.0, 680.0)],
+  [CollectibleType.COLLECTIBLE_GUPPYS_HAIRBALL, Vector(600.0, 680.0)],
 ]);
 export const STARTER_TRINKETS = new Map<TrinketType, Vector>([
-  [TrinketType.TRINKET_DEVILS_CROWN, Vector(200.0, 200.0)],
-  [TrinketType.TRINKET_TORN_CARD, Vector(280.0, 200.0)],
-  [TrinketType.TRINKET_CURSED_PENNY, Vector(360.0, 200.0)],
-  [TrinketType.TRINKET_OUROBOROS_WORM, Vector(440.0, 200.0)],
-  [TrinketType.TRINKET_BUTTER, Vector(640.0, 200.0)],
+  [TrinketType.TRINKET_DEVILS_CROWN, Vector(200.0, 280.0)],
+  [TrinketType.TRINKET_TORN_CARD, Vector(280.0, 280.0)],
+  [TrinketType.TRINKET_CURSED_PENNY, Vector(360.0, 280.0)],
+  [TrinketType.TRINKET_OUROBOROS_WORM, Vector(440.0, 280.0)],
+  [TrinketType.TRINKET_BUTTER, Vector(640.0, 280.0)],
+  [TrinketType.TRINKET_PANIC_BUTTON, Vector(720.0, 280.0)],
+  [TrinketType.TRINKET_M, Vector(800.0, 280.0)],
+  [TrinketType.TRINKET_WIGGLE_WORM, Vector(880.0, 280.0)],
+  [TrinketType.TRINKET_FRAGMENTED_CARD, Vector(960.0, 280.0)],
+  [TrinketType.TRINKET_DUCT_TAPE, Vector(200.0, 360.0)],
 ]);
 
 Vector(440.0, 200.0);

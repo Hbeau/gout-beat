@@ -183,6 +183,7 @@
 		<sample weight="1" path="Hein1.wav" />
 		<sample weight="1" path="Hein2.wav" />
 		<sample weight="1" path="Hein3.wav" />
+		<sample weight="1" path="Quoi1.wav" />
 	</sound>
 	<sound id="56">
 		<sample weight="1" path="child happy roar short.wav" />

@@ -6,5 +6,5 @@ export interface RuleDescription {
   gameText: string;
   pickup: PickupVariant;
   modifier: RulesModifiers;
-  icon : int
+  icon: int;
 }
