@@ -64,7 +64,7 @@ function initSelectRoom() {
     }
   }
   if (getRoomName().includes("shishengine")) {
-    game.ShowHallucination(0, 31);
+    game.ShowHallucination(0, 6357);
     Isaac.GetPlayer().Position = Vector(540, 230);
   }
 }

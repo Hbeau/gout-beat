@@ -25,7 +25,11 @@ export const STARTER_ITEMS = new Map<CollectibleType, Vector>([
   [CollectibleType.COLLECTIBLE_STRAW_MAN, Vector(1080.0, 560.0)],
   [CollectibleType.COLLECTIBLE_SATURNUS, Vector(1080.0, 640.0)],
   [CollectibleType.COLLECTIBLE_MY_REFLECTION, Vector(1040.0, 680.0)],
-  [CollectibleType.COLLECTIBLE_TINY_PLANET, Vector(160.0, 640.0)],
+  [CollectibleType.COLLECTIBLE_TINY_PLANET, Vector(200.0, 680.0)],
+  [CollectibleType.COLLECTIBLE_CHAOS, Vector(280.0, 680.0)],
+  [CollectibleType.COLLECTIBLE_9_VOLT, Vector(360.0, 680.0)],
+  [CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE, Vector(440.0, 680.0)],
+  [CollectibleType.COLLECTIBLE_PLAN_C, Vector(520.0, 680.0)],
 ]);
 export const STARTER_TRINKETS = new Map<TrinketType, Vector>([
   [TrinketType.TRINKET_DEVILS_CROWN, Vector(200.0, 200.0)],
