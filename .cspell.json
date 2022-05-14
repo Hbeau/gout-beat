@@ -8,13 +8,15 @@
     "hudpickups",
     "isaacscript",
     "itemdungeon",
+    "Monstro",
+    "MONSTRO",
     "PILLEFFECT",
+    "Pillule",
     "sarisia",
+    "SHOOTLEFT",
+    "SHOOTRIGHT",
     "steamapps",
     "technote",
-    "tstl",
-    "MONSTRO",
-    "Pillule",
-    "Monstro"
+    "tstl"
   ]
 }
