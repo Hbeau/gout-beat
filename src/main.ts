@@ -22,7 +22,6 @@ export function main(): void {
   const modUpgraded = upgradeMod(mod);
   // Set a callback function that corresponds to when a new run is started
   mod.AddCallback(ModCallbacks.MC_POST_GAME_STARTED, postGameStarted);
-  mod.AddCallback(ModCallbacks.MC_POST_NEW_LEVEL, boostIsaacForTest);
   gridEntityInit(modUpgraded);
   entityKillInit(mod);
   postRenderInit(mod);
@@ -37,6 +36,3 @@ export function main(): void {
   registerRemoveTear(mod);
 }
 
-function boostIsaacForTest() {
-  Isaac.GetPlayer().Damage = 400;
-}
